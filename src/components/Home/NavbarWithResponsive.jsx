@@ -6,8 +6,11 @@ import MobileNavbar from "./Navbar/MobileNavBar"
 export default function NavbarWithResponsive() {
     return (
         <>
-            <Navbar />
-            <MobileNavbar />
+            <header>
+                <Navbar />
+                <MobileNavbar />
+            </header>
+
         </>
 
     )
