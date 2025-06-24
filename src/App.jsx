@@ -6,6 +6,7 @@ import NavbarWithResponsive from './components/Home/NavbarWithResponsive';
 
 //IMPORTO FILE DATA CON ROTTE
 import routes from '../data/routingCostant';
+import Footer from './components/Home/Footer/Footer';
 
 
 function App() {
@@ -23,8 +24,11 @@ function App() {
         {routes.map(rotta => (
           <Route path={rotta.path} element={<rotta.component />} />
         ))}
-  
+
       </Routes>
+
+      {/* Footer */}
+      <Footer />
     </BrowserRouter>
   )
 }

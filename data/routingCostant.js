@@ -14,13 +14,13 @@ const routes = [
     {
         id: 2,
         path: '/compare',
-        name: 'Compare',
+        name: 'Compara',
         component: ComparePage
     },
     {
         id: 3,
         path: '/contact',
-        name: 'Contact Us',
+        name: 'Contattaci',
         component: ContactPage 
     },
 ];
