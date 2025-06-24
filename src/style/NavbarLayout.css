@@ -51,9 +51,10 @@
 }
 
 .second-element ul li a:hover {
-    border-bottom: 2px solid gray;
+    border-bottom: 2px solid #fc6d39;
     padding-bottom: 5px;
-
+    color: #fc6d39;
+    text-shadow: 0 0 10px rgba(255, 107, 53, 0.5);
 }
 
 /* Flex item set 3 */

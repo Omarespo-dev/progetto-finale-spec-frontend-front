@@ -47,6 +47,9 @@
     gap: 20px;
 }
 
+
+/* INPUT SET */
+
 .set-input-btn-hero input {
     width: 40%;
     border-radius: 999px;
@@ -54,12 +57,32 @@
     border: none;
 }
 
+.set-input-btn-hero input::placeholder {
+ font-family: 'Arial', sans-serif;
+ color: #666;
+}
+
+.set-input-btn-hero input:focus, 
+input:hover {
+ outline: none;
+    border: 2px solid #fc6d39; 
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(255, 107, 53, 0.5); 
+    transition: all 0.2s ease; 
+}
+
+
+/* BUTTON SET */
 .set-input-btn-hero button {
     border-radius: 999px;
-    padding: 10px 20px;
+    padding: 12px 24px;
     border: none;
     cursor: pointer;
-    background-color: black;
+    background-color: #fc6d39;
     color: white;
+    transition: background-color 0.3s ease;
+}
 
+.set-input-btn-hero button:hover {
+    background-color: #e55a2b; 
 }

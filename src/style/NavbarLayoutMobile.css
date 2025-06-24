@@ -49,8 +49,9 @@
 }
 
 .navlinks a:hover{
-    color: gainsboro;
-    border-bottom: 2px solid gainsboro;
+    border-bottom: 2px solid #fc6d39;
+    color: #fc6d39;
+    text-shadow: 0 0 10px rgba(255, 107, 53, 0.5);
 }
 
 
