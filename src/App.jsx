@@ -2,11 +2,11 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 //importo componenti layout HEADER
-import NavbarWithResponsive from './components/Home/Homepage/NavbarWithResponsive';
+import NavbarWithResponsive from './components/Layouts/NavbarWithResponsive';
 
 //IMPORTO FILE DATA CON ROTTE
 import routes from '../data/routingCostant';
-import Footer from './components/Home/Homepage/Footer/Footer';
+import Footer from './components/Layouts/Homepage/Footer/Footer';
 
 
 function App() {

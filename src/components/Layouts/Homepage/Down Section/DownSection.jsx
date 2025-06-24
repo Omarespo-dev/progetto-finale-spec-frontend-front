@@ -2,7 +2,7 @@
 import '../../../../style/DownSection.css'
 
 //importo dati Downsection
-import downSection from "../../../../../data/downSection"
+import downSection from '../../../../../data/DownSection.js'
 
 
 export default function DownSection() {

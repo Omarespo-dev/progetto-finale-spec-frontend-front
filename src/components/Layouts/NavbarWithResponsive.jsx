@@ -1,13 +1,13 @@
 //Importo componenti navbar sia responsive che non
-import Navbar from "./Navbar/Navbar"
-import MobileNavbar from "./Navbar/MobileNavBar"
+import Navbar from "./Homepage/Navbar/Navbar"
+import MobileNavbar from "./Homepage/Navbar/MobileNavBar"
 import { useState } from "react"
 
 
 export default function NavbarWithResponsive() {
 
     //imposto state per gestire aperto e chiuso per navbar
-    const [show,setShow] = useState(false)
+    const [show, setShow] = useState(false)
 
     //CHIUDO Nav
     const closeNav = () => setShow(false)
@@ -20,7 +20,7 @@ export default function NavbarWithResponsive() {
         <>
             <header>
                 <Navbar openNav={openNav} />
-                <MobileNavbar show={show} closeNav={closeNav}/>
+                <MobileNavbar show={show} closeNav={closeNav} />
             </header>
 
         </>
