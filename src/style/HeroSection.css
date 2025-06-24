@@ -2,6 +2,7 @@
 .container-hero {
     height: 600px;
     position: relative;
+    margin-top: 100px;
 }
 
 /* video settings */
@@ -9,6 +10,7 @@
     height: 100%;
     width: 100%;
     object-fit: cover;
+    
 }
 
 .flex-item-hero {

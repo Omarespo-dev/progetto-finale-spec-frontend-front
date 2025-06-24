@@ -23,7 +23,7 @@ export default function DownSection() {
 
                     <section className='container-flex-down-2'>
                         {downSection.map(card => (
-                            <section className='set-mini-card'>
+                            <section className='set-mini-card' key={card.id}>
                                 <img src={card.image} alt={card.title} />
                                 <h4>{card.title}</h4>
                                 <p>{card.description}</p>
