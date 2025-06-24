@@ -1,0 +1,108 @@
+/* set container */
+.container-smartphone-compare {
+    /* height: 600px; */
+    display: flex;
+    justify-content: center;
+}
+
+.contaier-flex-smartphone {
+    width: 100%;
+}
+
+/* 1 container per samrtphone in evidenza */
+.smartphone-evidenza-container {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    padding: 50px;
+    gap: 20px;
+}
+
+.smartphone-evidenza-container button {
+    cursor: pointer;
+    padding: 12px 24px;
+    border: none;
+    background-color: #fc6d39;
+    color: white;
+    transition: background-color 0.3s ease;
+    border-radius: 999px;
+}
+
+.smartphone-evidenza-container button:hover {
+    background-color: #e55a2b;
+}
+
+/* smartphone card */
+.smartphone-card {
+    /* background-color: #fc6d39; */
+    width: 100%;
+    /* height: 500px; */
+    padding: 50px;
+    display: flex;
+    gap: 25px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+/* Settaggio card */
+.card-evidenza {
+    width: 350px;
+    /* background-color: rebeccapurple; */
+    /* height: 250px; */
+    padding: 20px;
+    border: 1px solid #fc6d39;
+    box-shadow: 0 0 10px rgba(255, 107, 53, 0.5);
+    transition: all 0.2s ease;
+    border-radius: 20px;
+}
+
+/* cuore set */
+.set-cuore-card {
+    /* background-color: #e55a2b; */
+    text-align: end;
+}
+
+.set-cuore-card svg {
+    font-size: 24px;
+    cursor: pointer;
+}
+
+/* img set */
+.set-img-card {
+    /* background-color: red; */
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.set-img-card img {
+    width: 65%;
+    height: 100%;
+}
+
+
+/* Description set */
+.set-description button {
+    border-radius: 10px;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    background-color: #fc6d39;
+    color: white;
+    transition: background-color 0.3s ease;
+    margin-top: 10px;
+}
+
+.set-description button:hover {
+    background-color: #e55a2b;
+}
+
+.set-description {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.set-description p{
+    font-size: 15px;
+}
