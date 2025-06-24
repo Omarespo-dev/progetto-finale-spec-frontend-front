@@ -1,0 +1,88 @@
+/* Img set */
+.img-set-down-section {
+    width: 100%;
+    height: 500px;
+}
+
+.img-set-down-section img {
+    width: 100%;
+    object-fit: cover;
+    height: 100%;
+}
+
+/* Container set */
+.container-down-section {
+    /* height: 500px; */
+    display: flex;
+    justify-content: center;
+
+}
+
+.container-down-section-flex {
+    width: 95%;
+    display: flex;
+}
+
+/* 1 SECTION SETUP */
+.container-flex-down {
+    /* width: 50%; */
+    padding: 50px;
+    align-content: center;
+}
+
+.container-flex-down p {
+    margin-top: 30px;
+}
+
+/* 2  SECTION SETUP*/
+.container-flex-down-2 {
+    /* background-color: aqua; */
+    /* width: 50%; */
+    padding: 50px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.set-mini-card img {
+    width: 70px;
+}
+
+.set-mini-card {
+    width: 200px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    margin: 20px;
+}
+
+
+/* query responsive */
+
+@media screen and (max-width: 1415px) and (min-width: 300px) {
+    .container-down-section-flex {
+        flex-wrap: wrap;
+    }
+
+    .container-flex-down{
+        width: unset;
+    }
+    .container-flex-down-2{
+        width: 100%;
+    }
+
+}
+
+
+
+
+
+
+
+@media screen and (max-width: 300px) and (min-width: 200px) {
+    .container-flex-down-2{
+        padding: 20px;
+    }
+
+}
