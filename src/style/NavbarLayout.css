@@ -1,7 +1,7 @@
 /* NavBar set */
 .container-navbar {
     height: 100px;
-    
+
     display: flex;
     justify-content: center;
 }
@@ -10,13 +10,13 @@
     /* background-color: red; */
     width: 95%;
     display: flex;
-    
+
 }
 
 /* Flex item set 1 */
 .first-element {
     width: 20%;
-    
+
 }
 
 .first-element img {
@@ -41,30 +41,30 @@
     text-decoration: none;
 }
 
-.second-element ul li{
+.second-element ul li {
     list-style-type: none
 }
 
-.second-element ul li a{
+.second-element ul li a {
     text-decoration: none;
     color: black;
     transition: all 0.3s ease;
 }
 
-.second-element ul li a:hover{
+.second-element ul li a:hover {
     border-bottom: 2px solid gray;
     padding-bottom: 5px;
-    
+
 }
 
 /* Flex item set 3 */
-.third-element{
+.third-element {
     width: 30%;
     display: flex;
     align-items: center;
 }
 
-.third-element ul{
+.third-element ul {
     display: flex;
     width: 100%;
     justify-content: center;
@@ -72,6 +72,50 @@
     gap: 30px;
 }
 
-.third-element ul li{
+.third-element ul li {
     list-style-type: none
+}
+
+/* set burger menu */
+.set-burger {
+    width: 30px;
+    height: 30px;
+    color: black;
+    cursor: pointer;
+    display: none;
+}
+
+/* Flex item set 4 */
+.four-element {
+    display: none;
+}
+
+/* Responsive */
+@media screen and (max-width: 670px) and (min-width: 200px) {
+
+    /* burger on */
+    .set-burger {
+        display: block;
+    }
+
+    
+    .first-element {
+        width: unset;
+    }
+
+    /* display none elements */
+    .second-element {
+        display: none;
+    }
+
+    .third-element {
+        display: none;
+        width: 100%;
+    }
+
+    .four-element {
+        width: 10%;
+        display: flex;
+        align-items: center;
+    }
 }

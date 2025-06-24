@@ -11,8 +11,10 @@ import routes from "../../../../data/routingCostant"
 //importo cuore layout da react icons 
 import { CiHeart } from "react-icons/ci";
 
+//importo burger menu
+import { HiBars3BottomRight } from "react-icons/hi2";
 
-export default function Navbar() {
+export default function Navbar({openNav}) {
   return (
     <div className="container-navbar">
       <div className="container-flex">
@@ -43,7 +45,14 @@ export default function Navbar() {
             <li>
               <CiHeart />
             </li>
+            
           </ul>
+            
+        </div>
+        
+        {/* Flex Item 4 */}
+        <div className="four-element">
+            <HiBars3BottomRight className='set-burger' onClick={openNav}/>
         </div>
 
       </div>

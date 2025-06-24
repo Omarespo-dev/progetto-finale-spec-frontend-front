@@ -13,14 +13,17 @@ function App() {
 
   return (
     <BrowserRouter>
+
+      {/* Navbar completa anche con responsive */}
       <NavbarWithResponsive />
+
       <Routes>
         
         {/* faccio map cosi mi ricavo ogni rotta */}
         {routes.map(rotta => (
           <Route path={rotta.path} element={<rotta.component />} />
         ))}
-
+  
       </Routes>
     </BrowserRouter>
   )
