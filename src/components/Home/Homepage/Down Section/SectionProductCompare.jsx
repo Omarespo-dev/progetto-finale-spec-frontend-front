@@ -1,6 +1,5 @@
-
 //importo css
-import "../../../style/SectionProductCompare.css"
+import '../../../../style/SectionProductCompare.css'
 
 //importo icona
 import { CiHeart } from "react-icons/ci";
@@ -26,7 +25,7 @@ export default function SectionProductCompare() {
             </section>
 
             <section className="set-img-card">
-              <img src="../../../images/apple-iphone-15-pro.jpg" alt="" />
+              <img src="/images/apple-iphone-15-pro.jpg" alt="" />
             </section>
 
             <section className="set-description">

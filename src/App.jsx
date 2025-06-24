@@ -2,11 +2,11 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 //importo componenti layout HEADER
-import NavbarWithResponsive from './components/Home/NavbarWithResponsive';
+import NavbarWithResponsive from './components/Home/Homepage/NavbarWithResponsive';
 
 //IMPORTO FILE DATA CON ROTTE
 import routes from '../data/routingCostant';
-import Footer from './components/Home/Footer/Footer';
+import Footer from './components/Home/Homepage/Footer/Footer';
 
 
 function App() {
@@ -19,7 +19,7 @@ function App() {
       <NavbarWithResponsive />
 
       <Routes>
-        
+
         {/* faccio map cosi mi ricavo ogni rotta */}
         {routes.map(rotta => (
           <Route path={rotta.path} element={<rotta.component />} />

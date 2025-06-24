@@ -1,16 +1,15 @@
-
 //Importo css
-import '../../../style/DownSection.css'
+import '../../../../style/DownSection.css'
 
 //importo dati Downsection
-import downSection from "../../../../data/downSection"
+import downSection from "../../../../../data/downSection"
 
 
 export default function DownSection() {
     return (
         <>
             <div className='img-set-down-section'>
-                <img src="../../../../images/background-image.png" alt="" />
+                <img src="/images/background-image.png" alt="" />
             </div>
 
             <div className='container-down-section'>

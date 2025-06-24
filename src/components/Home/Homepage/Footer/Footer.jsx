@@ -1,13 +1,12 @@
-
 //importo css
-import "../../../style/Footer.css"
+import '../../../../style/Footer.css'
 
 //Importo icone 
 import { FaXTwitter } from "react-icons/fa6";
 import { FaYoutube } from "react-icons/fa";
 import { FaInstagram } from "react-icons/fa";
 import { AiFillTikTok } from "react-icons/ai";
-import footerLinks from "../../../../data/footerLinks";
+import footerLinks from "../../../../../data/footerLinks";
 import { Link } from "react-router-dom";
 
 
@@ -20,7 +19,7 @@ export default function Footer() {
                     {/* Flex item 1 */}
                     <div className="flex-item-footer">
                         <section className="flex-section-footer">
-                            <img src="../../../../VERSUS LOGO-Photoroom.png" alt="" />
+                            <img src="/VERSUS LOGO-Photoroom.png" alt="" />
 
                             <p>Confronta gli smartphone più recenti e trova il modello perfetto per te.</p>
                         </section>

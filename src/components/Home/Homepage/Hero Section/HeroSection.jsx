@@ -1,5 +1,5 @@
 //css
-import "../../../style/HeroSection.css"
+import '../../../../style/HeroSection.css'
 
 //typewriter
 import Typewriter from 'typewriter-effect';
@@ -9,7 +9,7 @@ export default function HeroSection() {
     return (
         <div className="container-hero">
             <video autoPlay muted loop>
-                <source src="../../../../video/Reveal.mp4" type="video/mp4" />
+                <source src="/video/Reveal.mp4" type="video/mp4" />
 
             </video>
 
