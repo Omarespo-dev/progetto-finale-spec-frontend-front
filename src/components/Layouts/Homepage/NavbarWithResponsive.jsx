@@ -1,6 +1,6 @@
 //Importo componenti navbar sia responsive che non
-import Navbar from "./Homepage/Navbar/Navbar"
-import MobileNavbar from "./Homepage/Navbar/MobileNavBar"
+import Navbar from "./Navbar/Navbar"
+import MobileNavbar from "./Navbar/MobileNavBar"
 import { useState } from "react"
 
 

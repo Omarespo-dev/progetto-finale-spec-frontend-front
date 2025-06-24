@@ -2,7 +2,7 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 //importo componenti layout HEADER
-import NavbarWithResponsive from './components/Layouts/NavbarWithResponsive';
+import NavbarWithResponsive from './components/Layouts/Homepage/NavbarWithResponsive';
 
 //IMPORTO FILE DATA CON ROTTE
 import routes from '../data/routingCostant';
