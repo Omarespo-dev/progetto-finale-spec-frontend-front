@@ -1,0 +1,65 @@
+/* Hero Section */
+.container-hero {
+    height: 600px;
+    position: relative;
+}
+
+/* video settings */
+.container-hero video {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+
+.flex-item-hero {
+    /* background-color: rgba(148, 0, 211, 0.9); */
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+/* H1 SET */
+.flex-item-hero h1 {
+    color: white;
+    font-size: 50px;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
+    margin-bottom: 10px;
+}
+
+.highlight {
+    color: #fc6d39;
+    text-shadow: 0 0 10px rgba(255, 107, 53, 0.5);
+}
+
+
+/* SETUP INBUT WITH BUTTON */
+
+.set-input-btn-hero {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.set-input-btn-hero input {
+    width: 40%;
+    border-radius: 999px;
+    padding: 10px;
+    border: none;
+}
+
+.set-input-btn-hero button {
+    border-radius: 999px;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    background-color: black;
+    color: white;
+
+}
