@@ -1,4 +1,5 @@
 //css
+import { useState } from 'react';
 import '../../../../style/HeroSection.css'
 
 //typewriter
@@ -6,6 +7,12 @@ import Typewriter from 'typewriter-effect';
 
 
 export default function HeroSection() {
+    
+
+
+
+
+
     return (
         <div className="container-hero">
             <video autoPlay muted loop>
@@ -36,6 +43,12 @@ export default function HeroSection() {
 
                 <div className="set-input-btn-hero">
                     <input type="text" placeholder="Inizia a digitare qui per confrontare" />
+                    
+                    <select name="category" id="">
+                        <option value="">--Seleziona--</option>
+
+                    </select>
+
                     <button>Confronta</button>
                 </div>
 

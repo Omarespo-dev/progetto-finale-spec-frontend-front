@@ -8,28 +8,34 @@ import NavbarWithResponsive from './components/Layouts/Homepage/NavbarWithRespon
 import routes from '../data/routingCostant';
 import Footer from './components/Layouts/Homepage/Footer/Footer';
 
+//Importo il GlobalProvider cosi da rendere disponibili i dati in tutti i suoi componenti figli
+import GlobalProvider from './contexts/GlobalContext';
+
 
 function App() {
 
 
   return (
-    <BrowserRouter>
+    <GlobalProvider>
+      <BrowserRouter>
 
-      {/* Navbar completa anche con responsive */}
-      <NavbarWithResponsive />
+        {/* Navbar completa anche con responsive */}
+        <NavbarWithResponsive />
 
-      <Routes>
+        <Routes>
 
-        {/* faccio map cosi mi ricavo ogni rotta */}
-        {routes.map(rotta => (
-          <Route path={rotta.path} element={<rotta.component />} />
-        ))}
+          {/* faccio map cosi mi ricavo ogni rotta */}
+          {routes.map(rotta => (
+            <Route path={rotta.path} element={<rotta.component />} />
+          ))}
 
-      </Routes>
+        </Routes>
 
-      {/* Footer */}
-      <Footer />
-    </BrowserRouter>
+        {/* Footer */}
+        <Footer />
+      </BrowserRouter>
+    </GlobalProvider>
+
   )
 }
 

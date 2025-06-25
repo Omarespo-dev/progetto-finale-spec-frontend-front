@@ -10,9 +10,12 @@ import SectionProductCompare from "../components/Layouts/Homepage/Down Section/S
 export default function Homepage() {
   return (
     <>
-      <HeroSection />
-      <SectionProductCompare />
-      <DownSection />
+      <main>
+        <HeroSection />
+        <SectionProductCompare />
+        <DownSection />
+      </main>
+
     </>
 
   )

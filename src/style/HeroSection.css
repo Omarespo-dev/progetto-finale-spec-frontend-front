@@ -33,6 +33,7 @@
     font-size: 50px;
     text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
     margin-bottom: 10px;
+    height: 200px;
 }
 
 .highlight {
@@ -75,7 +76,7 @@ input:hover {
 
 
 /* BUTTON SET */
-.set-input-btn-hero button {
+.set-input-btn-hero button,select {
     border-radius: 999px;
     padding: 12px 24px;
     border: none;
@@ -83,8 +84,11 @@ input:hover {
     background-color: #fc6d39;
     color: white;
     transition: background-color 0.3s ease;
+    cursor: pointer;
 }
 
-.set-input-btn-hero button:hover {
+
+
+.set-input-btn-hero button,select:hover {
     background-color: #e55a2b; 
 }
