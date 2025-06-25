@@ -12,13 +12,11 @@ export default function HeroSection() {
 
     //Gestione Stato per Input
     const [input, setInput] = useState("")
-    //Gestione della lista smartphone sotto input
-    const [showList, setShowList] = useState(false)
     //Gestione input category
     const [inputSelect, setInputSelect] = useState("")
 
     //dati sia di recordData quindi filtro categoria e titolo e inoltre abbiamo un altra chiamata per i record che ci serve per rimuovere i duplicati delle categorie non possiamo farlo CON LA CATEGORIA DELLA QUERY
-    const { recordData, fetchRecord, dataCategory,fetchRecordCategory} = useContext(GlobalContext)
+    const { recordData, fetchRecord, dataCategory,fetchRecordCategory,setShowList,showList} = useContext(GlobalContext)
 
 
     //uso UseEffect per non fare chiamate illimitate inoltre mi deve rifare la funzione  anche quando cambia input

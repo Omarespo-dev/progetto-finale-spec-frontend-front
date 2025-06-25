@@ -9,13 +9,16 @@ export default function useFetch(url) {
     //Gestione per incapsulare dati da chiamata per le categorie e rimuovere i suoi duplicati
     const [dataCategory, setDataCategory] = useState([])
 
+    //Gestione della lista smartphone sotto input
+    const [showList, setShowList] = useState(false)
 
     //Faccio chiamata per avere i record per la lista sotto input 
     async function fetchRecord(searchInputTitle, categoryInput) {
 
         //Controllo se la lunghezza di input e 0 non fare chiamata e mettimi la lista a false
         if (searchInputTitle.length === 0) {
-            // setShowList(false)
+            setShowList(false)
+            setRecordData([])
             return
         }
 
@@ -67,6 +70,6 @@ export default function useFetch(url) {
     }
 
 
-    return {recordData,fetchRecord , dataCategory,fetchRecordCategory}
+    return {recordData,fetchRecord , dataCategory,fetchRecordCategory ,setShowList,showList}
 
 }
