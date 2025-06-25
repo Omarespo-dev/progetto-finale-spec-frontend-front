@@ -25,7 +25,7 @@ export default function HeroSection() {
     }, [input, inputSelect])
     
     //log dei dati della query
-    console.log(recordData);
+    // console.log(recordData);
 
 
     //uso UseEffect per non fare chiamate illimitate inoltre mi deve rifare la funzione 

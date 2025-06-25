@@ -9,6 +9,9 @@ export default function useFetch(url) {
     //Gestione per incapsulare dati da chiamata per le categorie e rimuovere i suoi duplicati
     const [dataCategory, setDataCategory] = useState([])
 
+    //Dati presi dalla chiamata in parallelo
+    const [datiObj, setDatiObj] = useState([])
+
     //Gestione della lista smartphone sotto input
     const [showList, setShowList] = useState(false)
 
@@ -70,6 +73,34 @@ export default function useFetch(url) {
     }
 
 
-    return {recordData,fetchRecord , dataCategory,fetchRecordCategory ,setShowList,showList}
+    //chiamata in paralelo per ricavare il dettaglio di quell oggetti
+    async function fetchParallelProduct() {
+
+        try {
+
+            //Faccio chiamata per ogni id pero prima mappo su datacategory per ricavarmi gli di e gli dico che con quell id di fare la chiamata in parallelo
+            const obj = await Promise.all(
+                dataCategory.map(prod =>
+                    fetch(`${url}/products/${prod.id}`)
+                        .then(res => res.json())
+                )
+            )
+
+            //salvo i dati
+            setDatiObj(obj)
+
+
+        } catch (err) {
+            console.error(err)
+        }
+    }
+    
+
+    return {
+        recordData, fetchRecord,
+        dataCategory, fetchRecordCategory,
+        setShowList, showList,
+        fetchParallelProduct,datiObj
+    }
 
 }
