@@ -1,10 +1,12 @@
 //css
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import '../../../../style/HeroSection.css'
 
 //typewriter
 import Typewriter from 'typewriter-effect';
 
+//Importo context per avere dati
+import { GlobalContext } from '../../../../contexts/GlobalContext';
 
 export default function HeroSection() {
 
@@ -15,88 +17,27 @@ export default function HeroSection() {
     //Gestione input category
     const [inputSelect, setInputSelect] = useState("")
 
+    //dati sia di recordData quindi filtro categoria e titolo e inoltre abbiamo un altra chiamata per i record che ci serve per rimuovere i duplicati delle categorie non possiamo farlo CON LA CATEGORIA DELLA QUERY
+    const { recordData, fetchRecord, dataCategory,fetchRecordCategory} = useContext(GlobalContext)
 
-    //Gestione per incapsulare dati da chiamata
-    const [recordData, setRecordData] = useState([])
-
-    //Gestione per incapsulare dati da chiamata per le categorie e rimuovere i suoi duplicati
-    const [dataCategory, setDataCategory] = useState([])
-
-
-    //Faccio chiamata per avere i record per la lista sotto input 
-    async function fetchRecord(url, searchInputTitle, categoryInput) {
-
-        //Controllo se la lunghezza di input e 0 non fare chiamata e mettimi la lista a false
-        if (searchInputTitle.length === 0) {
-            setShowList(false)
-            return
-        }
-
-        //Prova ad eseguire questo se va male vai nel catch
-        try {
-            const response = await fetch(`${url}/products?search=${searchInputTitle}&category=${categoryInput}`)
-
-            //Gestisco la response
-            if (!response.ok) {
-                throw new Error(`Errore Http: ${response.status}`);
-            }
-
-            //converto in json
-            const convertJson = await response.json()
-            setRecordData(convertJson)
-
-        } catch (err) {
-            console.error(err)
-            throw new Error(`Server non raggiungibile: ${err.message}`)
-
-        }
-    }
 
     //uso UseEffect per non fare chiamate illimitate inoltre mi deve rifare la funzione  anche quando cambia input
     useEffect(() => {
-        fetchRecord(import.meta.env.VITE_API_URL, input, inputSelect)
+        fetchRecord(input, inputSelect)
     }, [input, inputSelect])
-
+    
     //log dei dati della query
     console.log(recordData);
 
 
-
-    //Faccio un altra chiamata per ricavarmi i record.category e rimuovere i suoi duplicati
-    async function fetchRecordCategory(url) {
-
-        //Prova ad eseguire questo se va male vai nel catch
-        try {
-            const response = await fetch(`${url}/products`)
-
-            //Gestisco la response
-            if (!response.ok) {
-                throw new Error(`Errore Http: ${response.status}`);
-            }
-
-            //converto in json
-            const convertJson = await response.json()
-
-            //aggiorno i dati
-            setDataCategory(convertJson)
-
-        } catch (err) {
-            console.error(err)
-            throw new Error(`Server non raggiungibile:${err.message}`)
-
-        }
-
-    }
-
-    //uso UseEffect per non fare chiamate illimitate inoltre mi deve rifare la funzione  anche quando cambia input
+    //uso UseEffect per non fare chiamate illimitate inoltre mi deve rifare la funzione 
     useEffect(() => {
-        fetchRecordCategory(import.meta.env.VITE_API_URL)
+        fetchRecordCategory()
     }, [])
-
-
+    
     //Rimuovo i duplicati dal recordData cosi che mi ricavo solo le categorie senza duplicati
     const removeDuplicate = [...new Set(dataCategory.map(smart => smart.category))]
-
+    
 
 
     return (

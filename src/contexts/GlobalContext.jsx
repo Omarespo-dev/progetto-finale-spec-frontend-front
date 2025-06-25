@@ -7,13 +7,18 @@ const GlobalContext = createContext()
 // Esporto anche il contesto così puoi usarlo con useContext
 export { GlobalContext };
 
+//Importo Custom Hook
+import useFetch from "../hooks/useFetch";
 
 // Funzione da rendere disponibile in tutto il codice
 export default function GlobalProvider({ children }){
     //QUA PASSIAMO COSA CI SERVE E POI LO PASSEREMO CON IL VALUE
 
+    const {fetchRecord,recordData ,dataCategory,fetchRecordCategory} = useFetch(import.meta.env.VITE_API_URL)
+
+
     return(
-        <GlobalContext.Provider>
+        <GlobalContext.Provider value={{fetchRecord,recordData,dataCategory,fetchRecordCategory}}>
             {children}
         </GlobalContext.Provider>
     )
