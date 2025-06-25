@@ -15,15 +15,28 @@ export default function HeroSection() {
     //Gestione input category
     const [inputSelect, setInputSelect] = useState("")
 
-    //dati sia di recordData quindi filtro categoria e titolo e inoltre abbiamo un altra chiamata per i record che ci serve per rimuovere i duplicati delle categorie non possiamo farlo CON LA CATEGORIA DELLA QUERY
-    const { recordData, fetchRecord, dataCategory,fetchRecordCategory,setShowList,showList} = useContext(GlobalContext)
+    //dati Presi dal context
+    const {
+        // Per chiamata filtro e categoria
+        recordData, fetchRecord,
+
+        // Per ricavarmi tutti i record per prendere solo le categorie
+        dataCategory, fetchRecordCategory,
+
+        //Per mostrare la lista e non 
+        setShowList, showList,
+
+        //Per chiamata parallelo per ricavare obj dall id
+        fetchParallelProduct
+
+    } = useContext(GlobalContext)
 
 
-    //uso UseEffect per non fare chiamate illimitate inoltre mi deve rifare la funzione  anche quando cambia input
+    //uso UseEffect per non fare chiamate illimitate inoltre mi deve rifare la funzione  anche quando cambia input e il selectInput
     useEffect(() => {
         fetchRecord(input, inputSelect)
     }, [input, inputSelect])
-    
+
     //log dei dati della query
     // console.log(recordData);
 
@@ -32,10 +45,54 @@ export default function HeroSection() {
     useEffect(() => {
         fetchRecordCategory()
     }, [])
-    
+
     //Rimuovo i duplicati dal recordData cosi che mi ricavo solo le categorie senza duplicati
     const removeDuplicate = [...new Set(dataCategory.map(smart => smart.category))]
+
+
+    //Funzione select product
+    function selected(smartphone) {
+        //setto input con il prodotto
+        setInput(smartphone)
+
+        //chiudo lista
+        setShowList(false)
+    }
     
+    
+    
+    ///////////////////////////////////////////////////////////
+    
+    
+    //arr con obj PRESO DA INPUT AL CLICK DEL BUTTON
+    const [arrConfronto, setArrConfronto] = useState([])
+
+    //Ora Definisco un altro State per la chiamata in Promise all presa da arrConfronto
+    const [arrObjCompleto,setArrObjCompleto] = useState([])
+
+    //Funzione Confronta button
+    function addObjCompare() {
+
+        //CERCO NELL ARR RECOR-DATA SE L OGGETTO E === INPUT SELEZIONATO
+        const verifico = recordData.find(obj => obj.title === input)
+
+        //SE E VERO ALLORA TU MI VERIFICHI SE ANCHE QUEL OGGETTO E GIA PRESENTE NELL ARR OGGETTO PK SE FOSSE VERO CHE HANNO ID UGUALI ALLORA RITORNI L ARR ALTRIMENTI MI FAI LA COPIA DELL ARR E MI AGGIUNGI L OGGETTO
+        if (verifico) {
+            setArrConfronto(arr => arr.some(item => item.id === verifico.id) ? arr : [...arr, verifico])
+        }
+        setInput('')
+
+    }
+    
+    //faccio la chiamata al montaggio del componente e al cambiare di agggiunta al prodotto nell arrConfronto
+    useEffect(() => {
+        fetchParallelProduct(arrConfronto , setArrObjCompleto)
+        
+    },[arrConfronto])
+
+    //DEBUG 
+    console.log(arrObjCompleto);
+
 
 
     return (
@@ -93,10 +150,7 @@ export default function HeroSection() {
                                         {recordData.map(smartphone => (
                                             <li key={smartphone.id}
 
-                                                onClick={() => {
-                                                    setInput(smartphone.title)
-                                                    setShowList(false)
-                                                }}>
+                                                onClick={() => selected(smartphone.title)}>
 
                                                 {smartphone.title}</li>
                                         ))}
@@ -123,7 +177,7 @@ export default function HeroSection() {
 
                     </select>
 
-                    <button>Confronta</button>
+                    <button onClick={addObjCompare}>Confronta</button>
                 </div>
 
             </div>

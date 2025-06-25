@@ -16,7 +16,7 @@ export default function SectionProductCompare() {
 
   //mi deve far vedere i dati solo al montaggio del componente e al cambiamento di dataCategory
   useEffect(() => {
-    fetchParallelProduct()
+    fetchParallelProduct(dataCategory)
   }, [dataCategory])
 
   //prendo i primi 6 elementi 

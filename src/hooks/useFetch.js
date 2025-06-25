@@ -74,25 +74,25 @@ export default function useFetch(url) {
 
 
     //chiamata in paralelo per ricavare il dettaglio di quell oggetti
-    async function fetchParallelProduct() {
+    async function fetchParallelProduct(arr, setterFunction = setDatiObj) {
 
         try {
 
             //Faccio chiamata per ogni id pero prima mappo su datacategory per ricavarmi gli di e gli dico che con quell id di fare la chiamata in parallelo
             const obj = await Promise.all(
-                dataCategory.map(prod =>
+                arr.map(prod =>
                     fetch(`${url}/products/${prod.id}`)
                         .then(res => res.json())
                 )
             )
             //salvo i dati
-            setDatiObj(obj)
+            setterFunction(obj)
 
         } catch (err) {
             console.error(err)
         }
     }
-    
+
 
     return {
         // Per chiamata filtro e categoria
@@ -105,7 +105,7 @@ export default function useFetch(url) {
         setShowList, showList,
 
         //Per chiamata parallelo per ricavare obj dall id
-        fetchParallelProduct,datiObj
+        fetchParallelProduct, datiObj
     }
 
 }
