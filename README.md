@@ -1,5 +1,7 @@
 # In corso.....
-Ho iniziato ad implementare solo la parte di layout dove: la Homepage e completa manca La page Compare e la Detail Page Dopo aver implementato il layout proseguiro con tutta la logica per le seguenti page e iniziare a seguire i Requisiti Minimi
+Completato Layout Homepage e sto implementando la sua logica dopo di questo passiamo all altra pagina
+
+
 
 # Progetto Finale
 🖼️ Cosa devi realizzare
