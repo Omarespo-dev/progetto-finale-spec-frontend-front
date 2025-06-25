@@ -12,18 +12,30 @@ import { GlobalContext } from '../../../../contexts/GlobalContext.jsx'
 export default function SectionProductCompare() {
 
   //Prendere i prodotti dai record almeno 6 la chiamata ai record sta in useFetch
-  const { fetchParallelProduct, datiObj, dataCategory } = useContext(GlobalContext)
+  const { fetchParallelProduct, dataCategory , setArrObjCompleto,arrObjCompleto} = useContext(GlobalContext)
+
+  //Dati presi dalla chiamata in parallelo
+  const [datiObj, setDatiObj] = useState([])
 
   //mi deve far vedere i dati solo al montaggio del componente e al cambiamento di dataCategory
   useEffect(() => {
-    fetchParallelProduct(dataCategory)
+    fetchParallelProduct(dataCategory,setDatiObj)
   }, [dataCategory])
 
   //prendo i primi 6 elementi 
   const sixObj = datiObj.slice(0, 6)
+  
   //debug dati
   // console.log(sixObj);
 
+  //Function per aggiungere il prodotto al arrObjCompleto che include tutto
+  function addProduct (prod){
+    const giaPresente = arrObjCompleto.some(item => item.id === prod.id)
+
+    if(!giaPresente){
+      setArrObjCompleto([...arrObjCompleto, prod])
+    }
+  }
 
   return (
     <div className="container-smartphone-compare">
@@ -39,7 +51,7 @@ export default function SectionProductCompare() {
         <div className="smartphone-card">
 
           {/* dall oggetto ricavo la proprieta product */}
-          {sixObj.map(({ product }) => (
+          {sixObj.map(product  => (
             <div className="card-evidenza" key={product.id}>
               <section className="set-cuore-card">
                 <CiHeart />
@@ -51,7 +63,7 @@ export default function SectionProductCompare() {
 
               <section className="set-description">
                 <p>{product.title} </p>
-                <button>Aggiungi al Confronto</button>
+                <button onClick={() => addProduct(product)}>Aggiungi al Confronto</button>
               </section>
             </div>
           ))}

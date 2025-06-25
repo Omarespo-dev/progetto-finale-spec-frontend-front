@@ -24,8 +24,11 @@ export default function GlobalProvider({ children }) {
         //Per mostrare la lista e non 
         setShowList, showList,
 
-        //Per chiamata parallelo per ricavare obj dall id
-        fetchParallelProduct,datiObj } = useFetch(import.meta.env.VITE_API_URL)
+        //Funzione per fare chiamata in Parallelo
+        fetchParallelProduct,
+
+        //Arr dove all interno avremmo tutti i prodotti che abbiamo selezionato per il confroto con la sua funzione di aggiornamento
+        arrObjCompleto, setArrObjCompleto} = useFetch(import.meta.env.VITE_API_URL)
 
 
     return (
@@ -33,7 +36,8 @@ export default function GlobalProvider({ children }) {
             fetchRecord, recordData,
             dataCategory, fetchRecordCategory,
             showList, setShowList,
-            fetchParallelProduct,datiObj
+            fetchParallelProduct,
+            arrObjCompleto,setArrObjCompleto
         }}>
             {children}
         </GlobalContext.Provider>

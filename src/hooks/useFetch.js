@@ -9,8 +9,8 @@ export default function useFetch(url) {
     //Gestione per incapsulare dati da chiamata per le categorie e rimuovere i suoi duplicati
     const [dataCategory, setDataCategory] = useState([])
 
-    //Dati presi dalla chiamata in parallelo
-    const [datiObj, setDatiObj] = useState([])
+    //Ora Definisco un altro State per la chiamata in Promise all presa da arrConfronto
+    const [arrObjCompleto, setArrObjCompleto] = useState([])
 
     //Gestione della lista smartphone sotto input
     const [showList, setShowList] = useState(false)
@@ -74,7 +74,7 @@ export default function useFetch(url) {
 
 
     //chiamata in paralelo per ricavare il dettaglio di quell oggetti
-    async function fetchParallelProduct(arr, setterFunction = setDatiObj) {
+    async function fetchParallelProduct(arr, setterFunction = setArrObjCompleto) {
 
         try {
 
@@ -83,10 +83,17 @@ export default function useFetch(url) {
                 arr.map(prod =>
                     fetch(`${url}/products/${prod.id}`)
                         .then(res => res.json())
+                        .then(data => data.product) // ← Prendi solo product
                 )
             )
-            //salvo i dati
-            setterFunction(obj)
+
+
+            //PER FIXARE BUG CHE SE AGGIUNGEVO PRODOTTO CON INPUT E NE AGGIUNGEVO UN ALTRO DAI PRODOTTI SI RESETTAVA
+            //DA VEDERE????
+            setterFunction(prevArray => {
+                const nuovi = obj.filter(newItem => !prevArray.find(oldItem => oldItem.id === newItem.id))
+                return [...prevArray, ...nuovi]
+            })
 
         } catch (err) {
             console.error(err)
@@ -104,8 +111,11 @@ export default function useFetch(url) {
         //Per mostrare la lista e non 
         setShowList, showList,
 
-        //Per chiamata parallelo per ricavare obj dall id
-        fetchParallelProduct, datiObj
+        //Funzione per fare chiamata in Parallelo
+        fetchParallelProduct,
+
+        //Arr dove all interno avremmo tutti i prodotti che abbiamo selezionato per il confroto con la sua funzione di aggiornamento
+        arrObjCompleto, setArrObjCompleto
     }
 
 }

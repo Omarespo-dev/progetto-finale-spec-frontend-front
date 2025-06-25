@@ -27,7 +27,7 @@ export default function HeroSection() {
         setShowList, showList,
 
         //Per chiamata parallelo per ricavare obj dall id
-        fetchParallelProduct
+        fetchParallelProduct, arrObjCompleto
 
     } = useContext(GlobalContext)
 
@@ -67,9 +67,6 @@ export default function HeroSection() {
     //arr con obj PRESO DA INPUT AL CLICK DEL BUTTON
     const [arrConfronto, setArrConfronto] = useState([])
 
-    //Ora Definisco un altro State per la chiamata in Promise all presa da arrConfronto
-    const [arrObjCompleto,setArrObjCompleto] = useState([])
-
     //Funzione Confronta button
     function addObjCompare() {
 
@@ -80,14 +77,14 @@ export default function HeroSection() {
         if (verifico) {
             setArrConfronto(arr => arr.some(item => item.id === verifico.id) ? arr : [...arr, verifico])
         }
+        //resetto input
         setInput('')
 
     }
     
     //faccio la chiamata al montaggio del componente e al cambiare di agggiunta al prodotto nell arrConfronto
     useEffect(() => {
-        fetchParallelProduct(arrConfronto , setArrObjCompleto)
-        
+        fetchParallelProduct(arrConfronto) 
     },[arrConfronto])
 
     //DEBUG 
