@@ -14,10 +14,18 @@ import useFetch from "../hooks/useFetch";
 export default function GlobalProvider({ children }) {
     //QUA PASSIAMO COSA CI SERVE E POI LO PASSEREMO CON IL VALUE
 
-    const { fetchRecord, recordData,
+    const { 
+        // Per chiamata filtro e categoria
+        recordData, fetchRecord,
+
+        // Per ricavarmi tutti i record per prendere solo le categorie
         dataCategory, fetchRecordCategory,
+
+        //Per mostrare la lista e non 
         setShowList, showList,
-        fetchParallelProduct, datiObj } = useFetch(import.meta.env.VITE_API_URL)
+
+        //Per chiamata parallelo per ricavare obj dall id
+        fetchParallelProduct,datiObj } = useFetch(import.meta.env.VITE_API_URL)
 
 
     return (

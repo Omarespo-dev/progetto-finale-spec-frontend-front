@@ -85,10 +85,8 @@ export default function useFetch(url) {
                         .then(res => res.json())
                 )
             )
-
             //salvo i dati
             setDatiObj(obj)
-
 
         } catch (err) {
             console.error(err)
@@ -97,9 +95,16 @@ export default function useFetch(url) {
     
 
     return {
+        // Per chiamata filtro e categoria
         recordData, fetchRecord,
+
+        // Per ricavarmi tutti i record per prendere solo le categorie
         dataCategory, fetchRecordCategory,
+
+        //Per mostrare la lista e non 
         setShowList, showList,
+
+        //Per chiamata parallelo per ricavare obj dall id
         fetchParallelProduct,datiObj
     }
 

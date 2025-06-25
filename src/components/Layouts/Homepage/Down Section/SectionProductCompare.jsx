@@ -21,7 +21,8 @@ export default function SectionProductCompare() {
 
   //prendo i primi 6 elementi 
   const sixObj = datiObj.slice(0, 6)
-  console.log(sixObj);
+  //debug dati
+  // console.log(sixObj);
 
 
   return (
@@ -37,18 +38,19 @@ export default function SectionProductCompare() {
 
         <div className="smartphone-card">
 
-          {sixObj.map(smartphone => (
-            <div className="card-evidenza" key={smartphone.product.id}>
+          {/* dall oggetto ricavo la proprieta product */}
+          {sixObj.map(({ product }) => (
+            <div className="card-evidenza" key={product.id}>
               <section className="set-cuore-card">
                 <CiHeart />
               </section>
 
               <section className="set-img-card">
-                <img src={smartphone.product.image} alt={smartphone.product.title}  />
+                <img src={product.image} alt={product.title} />
               </section>
 
               <section className="set-description">
-                <p>{smartphone.product.title} </p>
+                <p>{product.title} </p>
                 <button>Aggiungi al Confronto</button>
               </section>
             </div>
