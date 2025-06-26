@@ -3,8 +3,11 @@ import { useState } from "react";
 
 export default function useFetch(url) {
 
-    //Gestione per incapsulare dati da chiamata
+    //Gestione per incapsulare dati da chiamata pagina Home
     const [recordData, setRecordData] = useState([])
+
+    //Gestione per incapsulare dati da chiamata pagina Smartphone prodotti
+    const [dataSmartphone, setDataSmartphone] = useState([])
 
     //Gestione per incapsulare dati da chiamata per le categorie e rimuovere i suoi duplicati
     const [dataCategory, setDataCategory] = useState([])
@@ -44,6 +47,32 @@ export default function useFetch(url) {
 
         }
     }
+
+    //Faccio chiamata per avere i Prodotti appena inizio a cercare dentro all input
+    async function fetchRecordSmartphone(searchInputTitle, categoryInput) {
+
+        //Prova ad eseguire questo se va male vai nel catch
+        try {
+            const response = await fetch(`${url}/products?search=${searchInputTitle}&category=${categoryInput}`)
+
+            //Gestisco la response
+            if (!response.ok) {
+                throw new Error(`Errore Http: ${response.status}`);
+            }
+
+            //converto in json
+            const convertJson = await response.json()
+            setDataSmartphone(convertJson)
+
+        } catch (err) {
+            console.error(err)
+            throw new Error(`Server non raggiungibile: ${err.message}`)
+
+        }
+    }
+
+
+
 
 
     //Faccio un altra chiamata per ricavarmi i record.category e rimuovere i suoi duplicati
@@ -116,7 +145,10 @@ export default function useFetch(url) {
         fetchParallelProduct,
 
         //Arr dove all interno avremmo tutti i prodotti che abbiamo selezionato per il confroto con la sua funzione di aggiornamento
-        arrObjCompleto, setArrObjCompleto
+        arrObjCompleto, setArrObjCompleto,
+
+        //Per pagina prodotti smartphone filtro
+        fetchRecordSmartphone,dataSmartphone
     }
 
 }

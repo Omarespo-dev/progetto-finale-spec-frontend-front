@@ -14,7 +14,7 @@ import useFetch from "../hooks/useFetch";
 export default function GlobalProvider({ children }) {
     //QUA PASSIAMO COSA CI SERVE E POI LO PASSEREMO CON IL VALUE
 
-    const { 
+    const {
         // Per chiamata filtro e categoria
         recordData, fetchRecord,
 
@@ -28,7 +28,13 @@ export default function GlobalProvider({ children }) {
         fetchParallelProduct,
 
         //Arr dove all interno avremmo tutti i prodotti che abbiamo selezionato per il confroto con la sua funzione di aggiornamento
-        arrObjCompleto, setArrObjCompleto} = useFetch(import.meta.env.VITE_API_URL)
+        arrObjCompleto, setArrObjCompleto,
+
+        //Per pagina prodotti smartphone filtro
+        fetchRecordSmartphone, dataSmartphone
+
+
+    } = useFetch(import.meta.env.VITE_API_URL)
 
 
     return (
@@ -37,7 +43,9 @@ export default function GlobalProvider({ children }) {
             dataCategory, fetchRecordCategory,
             showList, setShowList,
             fetchParallelProduct,
-            arrObjCompleto,setArrObjCompleto
+            arrObjCompleto, setArrObjCompleto,
+            
+            fetchRecordSmartphone, dataSmartphone
         }}>
             {children}
         </GlobalContext.Provider>

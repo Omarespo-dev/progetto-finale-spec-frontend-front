@@ -1,7 +1,7 @@
 # In corso.....
-1)Completato Layout Homepage e Logica di aggiunta prodotti ad array che sara quello che conterra il confronto sia per quello selezionato da input che per i Prodotti in Home
+1)Completato Layout Homepage e Logica di aggiunta prodotti ad array che sara quello che conterra il confronto sia per quello selezionato da input che per i Prodotti in Home /// INOLTRE AGGIUNGERE ALERT CHE STARA IN BASSO A DESTRA CHE TERRA IL CONTEGGIO DI QUELL ARR ANCHE ALL AGGIUNTA DEL PRODOTTO AL CONFRONTO ///  LA PAGINA DI DETTAGLIO DA FARE E COLLEGARE AI PRODOTTI 
 
-2)Aggiungere Layout page compare e page product con tutti i prodotti con logica e pagina di dettaglio e aggiungere wishlist
+2)Aggiungere Layout page Smartphone con tutti i prodotti con logica e pagina di dettaglio e aggiungere wishlist
 
 
 

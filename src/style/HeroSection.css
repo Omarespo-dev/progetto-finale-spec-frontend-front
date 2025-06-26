@@ -62,13 +62,15 @@
     border: none;
 }
 
-.set-input-btn-hero input::placeholder {
+/* INPUT SET 2 */
+
+.input-container input::placeholder {
     font-family: 'Arial', sans-serif;
     color: #666;
 }
 
-.set-input-btn-hero input:focus,
-input:hover {
+.input-container input
+ {
     outline: none;
     border: 2px solid #fc6d39;
     background-color: #fff;

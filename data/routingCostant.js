@@ -2,7 +2,7 @@
 //importo page
 import Homepage from "../src/pages/Homepage";
 import ContactPage from "../src/pages/ContactPage";
-import Smartphone from "../src/pages/SmartphonePage";
+import SmartphonePage from "../src/pages/SmartphonePage";
 
 const routes = [
     {
@@ -15,7 +15,7 @@ const routes = [
         id: 2,
         path: '/smartphone',
         name: 'Smartphone',
-        component: Smartphone
+        component: SmartphonePage
     },
     {
         id: 3,
