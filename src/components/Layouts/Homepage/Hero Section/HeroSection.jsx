@@ -58,17 +58,25 @@ export default function HeroSection() {
         //chiudo lista
         setShowList(false)
     }
-    
-    
-    
+
+
+
     ///////////////////////////////////////////////////////////
-    
-    
+
+
     //arr con obj PRESO DA INPUT AL CLICK DEL BUTTON
     const [arrConfronto, setArrConfronto] = useState([])
 
     //Funzione Confronta button
     function addObjCompare() {
+        // PRIMA controlla il limite
+        if (arrObjCompleto.length >= 2) {
+            alert("Hai raggiunto il massimo che puoi mettere")
+            setInput('')
+            setInputSelect('')
+            return 
+        }
+
 
         //CERCO NELL ARR RECOR-DATA SE L OGGETTO E === INPUT SELEZIONATO
         const verifico = recordData.find(obj => obj.title === input)
@@ -77,15 +85,16 @@ export default function HeroSection() {
         if (verifico) {
             setArrConfronto(arr => arr.some(item => item.id === verifico.id) ? arr : [...arr, verifico])
         }
+
         //resetto input
         setInput('')
 
     }
-    
+
     //faccio la chiamata al montaggio del componente e al cambiare di agggiunta al prodotto nell arrConfronto
     useEffect(() => {
-        fetchParallelProduct(arrConfronto) 
-    },[arrConfronto])
+        fetchParallelProduct(arrConfronto)
+    }, [arrConfronto])
 
     //DEBUG 
     console.log(arrObjCompleto);

@@ -2,7 +2,7 @@
 //importo page
 import Homepage from "../src/pages/Homepage";
 import ContactPage from "../src/pages/ContactPage";
-import ComparePage from "../src/pages/ComparePage";
+import Smartphone from "../src/pages/SmartphonePage";
 
 const routes = [
     {
@@ -13,9 +13,9 @@ const routes = [
     },
     {
         id: 2,
-        path: '/compare',
-        name: 'Compara',
-        component: ComparePage
+        path: '/smartphone',
+        name: 'Smartphone',
+        component: Smartphone
     },
     {
         id: 3,

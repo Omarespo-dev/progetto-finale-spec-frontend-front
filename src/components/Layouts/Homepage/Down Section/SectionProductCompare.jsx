@@ -12,27 +12,35 @@ import { GlobalContext } from '../../../../contexts/GlobalContext.jsx'
 export default function SectionProductCompare() {
 
   //Prendere i prodotti dai record almeno 6 la chiamata ai record sta in useFetch
-  const { fetchParallelProduct, dataCategory , setArrObjCompleto,arrObjCompleto} = useContext(GlobalContext)
+  const { fetchParallelProduct, dataCategory, setArrObjCompleto, arrObjCompleto } = useContext(GlobalContext)
 
   //Dati presi dalla chiamata in parallelo
   const [datiObj, setDatiObj] = useState([])
 
   //mi deve far vedere i dati solo al montaggio del componente e al cambiamento di dataCategory
   useEffect(() => {
-    fetchParallelProduct(dataCategory,setDatiObj)
+    fetchParallelProduct(dataCategory, setDatiObj)
   }, [dataCategory])
 
   //prendo i primi 6 elementi 
   const sixObj = datiObj.slice(0, 6)
-  
+
   //debug dati
   // console.log(sixObj);
 
+
   //Function per aggiungere il prodotto al arrObjCompleto che include tutto
-  function addProduct (prod){
+  function addProduct(prod) {
+    
+    // PRIMA controlla il limite
+    if (arrObjCompleto.length >= 2) {
+      alert("Hai raggiunto il massimo che puoi mettere")
+      return
+    }
+
     const giaPresente = arrObjCompleto.some(item => item.id === prod.id)
 
-    if(!giaPresente){
+    if (!giaPresente) {
       setArrObjCompleto([...arrObjCompleto, prod])
     }
   }
@@ -51,7 +59,8 @@ export default function SectionProductCompare() {
         <div className="smartphone-card">
 
           {/* dall oggetto ricavo la proprieta product */}
-          {sixObj.map(product  => (
+
+          {sixObj.length > 0 ? sixObj.map(product => (
             <div className="card-evidenza" key={product.id}>
               <section className="set-cuore-card">
                 <CiHeart />
@@ -66,7 +75,12 @@ export default function SectionProductCompare() {
                 <button onClick={() => addProduct(product)}>Aggiungi al Confronto</button>
               </section>
             </div>
-          ))}
+          ))
+            :
+            <div className="card-evidenza" style={{ width: "100%", textAlign: 'center' }}>
+              <h2>Erore di Rete nessun Smartphone Trovato</h2>
+            </div>
+          }
 
         </div>
 

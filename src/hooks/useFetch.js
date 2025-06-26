@@ -91,6 +91,7 @@ export default function useFetch(url) {
             //PER FIXARE BUG CHE SE AGGIUNGEVO PRODOTTO CON INPUT E NE AGGIUNGEVO UN ALTRO DAI PRODOTTI SI RESETTAVA
             //DA VEDERE????
             setterFunction(prevArray => {
+                // POI filtra e aggiungi
                 const nuovi = obj.filter(newItem => !prevArray.find(oldItem => oldItem.id === newItem.id))
                 return [...prevArray, ...nuovi]
             })
