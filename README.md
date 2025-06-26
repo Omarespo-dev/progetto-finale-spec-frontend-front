@@ -1,5 +1,7 @@
 # In corso.....
-Completato Layout Homepage e sto implementando la sua logica dopo di questo passiamo all altra pagina
+1)Completato Layout Homepage e Logica di aggiunta prodotti ad array che sara quello che conterra il confronto sia per quello selezionato da input che per i Prodotti in Home
+
+2)Aggiungere Layout page compare e page product con tutti i prodotti con logica e pagina di dettaglio e aggiungere wishlist
 
 
 
