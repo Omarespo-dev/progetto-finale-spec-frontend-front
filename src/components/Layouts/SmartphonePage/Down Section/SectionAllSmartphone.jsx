@@ -61,6 +61,9 @@ export default function SectionAllSmartphone() {
     //Gestione input category
     const [inputSelect, setInputSelect] = useState("")
 
+    //Gestione ordina da A-Z e Z-A
+    const [orderSelect, setOrderSelect] = useState("")
+
 
     //uso UseEffect per non fare chiamate illimitate inoltre mi deve rifare la funzione  anche quando cambia input e il selectInput
     useEffect(() => {
@@ -82,16 +85,53 @@ export default function SectionAllSmartphone() {
         //Se il nome dell’elemento contiene il testo scritto dall’utente (ignorando maiuscole/spazi), 
         // allora tieni l’elemento — altrimenti scartalo.
         const filtro = obj.title.toLowerCase().includes(input.toLowerCase().trim())
-        
+
         //filtro per categoria se input select e vuoto mi ritorni il filtro quindi tutti i prodotti
-        if(inputSelect === ""){ 
+        if (inputSelect === "") {
             return filtro
-        }else{
+        } else {
             // Categoria specifica: se obj.category e uguale all input select mi torni i prodotti selezionati per categoria && il filtro per ogni categoria
             return obj.category === inputSelect && filtro
         }
 
     })
+
+    // ORDINAMENTO: Prende l'array filtrato e lo ordina secondo la scelta dell'utente
+    const orderAtoZ = [...filtraggioInputSelect].sort((a, b) => {
+
+        // CONTROLLO VUOTO: Se l'utente non ha scelto nessun ordinamento dal select
+        if (orderSelect === "") {
+            // NESSUN CAMBIAMENTO: return 0 = mantieni l'ordine originale dell'array
+            return 0
+        }
+
+        // CASO A-Z: L'utente ha scelto ordinamento alfabetico crescente
+        if (orderSelect === "a-z") {
+            // CONFRONTO 1: Se il titolo di 'a' viene prima alfabeticamente di 'b' 
+            if (a.title < b.title) return -1  // RISULTATO: metti 'a' PRIMA di 'b'
+            // CONFRONTO 2: Se il titolo di 'a' viene dopo alfabeticamente di 'b'
+            if (a.title > b.title) return 1   // RISULTATO: metti 'a' DOPO 'b'
+            // UGUALI: Se i titoli sono identici, non cambiare posizione
+            return 0
+        }
+
+        // CASO Z-A: L'utente ha scelto ordinamento alfabetico decrescente  
+        if (orderSelect === "z-a") {
+            // CONFRONTO INVERSO 1: Se 'a' è maggiore alfabeticamente di 'b'
+            if (a.title > b.title) return -1  // RISULTATO: metti 'a' PRIMA (ordine decrescente)
+            // CONFRONTO INVERSO 2: Se 'a' è minore alfabeticamente di 'b'
+            if (a.title < b.title) return 1   // RISULTATO: metti 'a' DOPO (ordine decrescente)
+            // UGUALI: Se i titoli sono identici, non cambiare posizione
+            return 0
+        }
+
+        // FALLBACK: Se nessuna condizione precedente è soddisfatta
+        return 0  // SICUREZZA: mantieni ordine originale
+
+    })
+
+    console.log(orderAtoZ);
+
 
 
     //log dei dati della query
@@ -153,7 +193,11 @@ export default function SectionAllSmartphone() {
 
                     </select>
 
-                    <select name="order">
+                    <select
+                        name="order"
+                        value={orderSelect}
+                        onChange={e => setOrderSelect(e.target.value)}
+                    >
                         <option value="">Ordina Dalla</option>
                         <option value="a-z">A-Z</option>
                         <option value="z-a">Z-A</option>
@@ -167,7 +211,7 @@ export default function SectionAllSmartphone() {
 
                     {/* dall oggetto ricavo la proprieta product */}
 
-                    {filtraggioInputSelect.length > 0 ? filtraggioInputSelect.map(product => (
+                    {orderAtoZ.length > 0 ? orderAtoZ.map(product => (
                         <div className="card-evidenza" key={product.id}>
                             <section className="set-cuore-card">
                                 <CiHeart />
@@ -184,8 +228,8 @@ export default function SectionAllSmartphone() {
                         </div>
                     ))
                         :
-                        <div className="card-evidenza" style={{ width: "100%", textAlign: 'center' }}>
-                            <h2>Erore di Rete nessun Smartphone Trovato</h2>
+                        <div className="card-evidenza" style={{ width: "100%", textAlign: 'center',height:"40vh",alignContent:"center"}}>
+                            <h2>Errore Nessun Smartphone Trovato</h2>
                         </div>
                     }
 
