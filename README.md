@@ -1,7 +1,16 @@
 # In corso.....
-1)Completato Layout Homepage e Logica di aggiunta prodotti ad array che sara quello che conterra il confronto sia per quello selezionato da input che per i Prodotti in Home /// INOLTRE AGGIUNGERE ALERT CHE STARA IN BASSO A DESTRA CHE TERRA IL CONTEGGIO DI QUELL ARR ANCHE ALL AGGIUNTA DEL PRODOTTO AL CONFRONTO ///  LA PAGINA DI DETTAGLIO DA FARE E COLLEGARE AI PRODOTTI 
+1)Completato Layout Homepage e Logica di aggiunta prodotti ad array che sara quello che conterra il confronto sia per quello selezionato da input che per i Prodotti in Home 
 
-2)Aggiungere Layout page Smartphone con tutti i prodotti con logica e pagina di dettaglio e aggiungere wishlist
+2)Completata layout e logica pagina Smartphone 
+3)Quasi completato anche la pagina di Dettaglio manca BUTTON (AGGIUNGI CONFRONTO)
+
+
+# Cose da fare
+///Fare Pagina di confronto aggiungere elementi LOGICA GIA FATTA ///
+
+/// SIA IN HOME SIA IN SMARTPHONE E SIA NELLA PAGINA DI DETTAGLIO INOLTRE AGGIUNGERE ALERT CHE STARA IN BASSO A DESTRA CHE TERRA IL CONTEGGIO DI QUELL ARR ANCHE ALL AGGIUNTA DEL PRODOTTO AL CONFRONTO ///
+
+///Controllare Ogni Page per vedere se mancano Link o altro ///
 
 
 
@@ -20,24 +29,24 @@ Una SPA che simula l’esperienza di un utente non autenticato, che può:
 
 Per considerare il progetto completo, devono essere implementate almeno queste funzionalità:
 
-    Gestione di una risorsa definita in types.ts
+    Gestione di una risorsa definita in types.ts✅
 
-    Lista dei record, che mostra solo le proprietà principali title e category, e include:
-        Barra di ricerca per cercare nei titoli (title)
-        Filtro per categoria (category)
-        Ordinamento alfabetico per title o category (A-Z e Z-A)
+    Lista dei record, che mostra solo le proprietà principali title e category, e include:✅
+        Barra di ricerca per cercare nei titoli (title)✅
+        Filtro per categoria (category)✅
+        Ordinamento alfabetico per title o category (A-Z e Z-A)✅
 
-    Pagina di dettaglio per ogni record, con visualizzazione estesa delle sue proprietà (es. price, description, brand, ecc.)
+    Pagina di dettaglio per ogni record, con visualizzazione estesa delle sue proprietà (es. price, description, brand, ecc.)✅
 
-    Comparatore di 2 record, visualizzati affiancati per confrontarne le caratteristiche.
+    Comparatore di 2 record, visualizzati affiancati per confrontarne le caratteristiche.⚠️ {LOGICA GIA IMPLEMENTATA}
 
-    È libera la modalità di selezione: puoi permettere all’utente di aggiungere record al comparatore direttamente dalla lista, dalla pagina di dettaglio, oppure usare un menu a tendina, checkbox o qualsiasi altro sistema.
+    È libera la modalità di selezione: puoi permettere all’utente di aggiungere record al comparatore direttamente dalla lista, dalla pagina di dettaglio, oppure usare un menu a tendina, checkbox o qualsiasi altro sistema.❌
 
-    L’importante è che l’utente possa scegliere 2 record qualsiasi e confrontarli in modo chiaro.
+    L’importante è che l’utente possa scegliere 2 record qualsiasi e confrontarli in modo chiaro.✅
 
-    Sistema di preferiti, sempre accessibile e aggiornabile:
-        L’utente può aggiungere o rimuovere record dai preferiti in qualsiasi momento
-        I preferiti devono essere consultabili in ogni sezione dell’app (es. tramite una sezione dedicata, un’icona fissa, o una sidebar)
+    Sistema di preferiti, sempre accessibile e aggiornabile:❌
+        L’utente può aggiungere o rimuovere record dai preferiti in qualsiasi momento❌
+        I preferiti devono essere consultabili in ogni sezione dell’app (es. tramite una sezione dedicata, un’icona fissa, o una sidebar)❌
 
 
 
