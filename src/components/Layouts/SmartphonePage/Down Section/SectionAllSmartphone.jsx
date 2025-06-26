@@ -8,6 +8,7 @@ import { CiHeart } from "react-icons/ci";
 //importo context e global per prendere i dati dal global
 import { useContext, useEffect, useState } from 'react'
 import { GlobalContext } from '../../../../contexts/GlobalContext'
+import { Link } from 'react-router-dom';
 
 export default function SectionAllSmartphone() {
 
@@ -130,11 +131,10 @@ export default function SectionAllSmartphone() {
 
     })
 
-    console.log(orderAtoZ);
-
-
-
     //log dei dati della query
+    // console.log(orderAtoZ);
+
+    //log per arr dove stanno gli oggeti che aggiungiamo
     // console.log(arrObjCompleto);
     /////////////////////////////////////////////////////////////////////////
 
@@ -218,7 +218,7 @@ export default function SectionAllSmartphone() {
                             </section>
 
                             <section className="set-img-card">
-                                <img src={product.image} alt={product.title} />
+                                <Link to={`/smartphone/${product.id}`}> <img src={product.image} alt={product.title} /> </Link>
                             </section>
 
                             <section className="set-description">

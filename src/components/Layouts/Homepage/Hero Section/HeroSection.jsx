@@ -97,7 +97,7 @@ export default function HeroSection() {
     }, [arrConfronto])
 
     //DEBUG 
-    // console.log(arrObjCompleto);
+    console.log(arrObjCompleto);
 
 
 

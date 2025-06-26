@@ -15,7 +15,7 @@ export default function GlobalProvider({ children }) {
     //QUA PASSIAMO COSA CI SERVE E POI LO PASSEREMO CON IL VALUE
 
     const {
-        // Per chiamata filtro e categoria
+        // Per chiamata HOMEPAGE filtro PER TITLE E CATEGORIA 
         recordData, fetchRecord,
 
         // Per ricavarmi tutti i record per prendere solo le categorie
@@ -30,8 +30,11 @@ export default function GlobalProvider({ children }) {
         //Arr dove all interno avremmo tutti i prodotti che abbiamo selezionato per il confroto con la sua funzione di aggiornamento
         arrObjCompleto, setArrObjCompleto,
 
-        //Per pagina prodotti smartphone filtro
-        fetchRecordSmartphone, dataSmartphone
+        //Per pagina PRODOTTI smartphone filtro PER TITLE E CATEGORIA 
+        fetchRecordSmartphone, dataSmartphone,
+
+        // Per Pagina di dettaglio di un singolo prodotto
+        smartphoneDetail,phoneDetail
 
 
     } = useFetch(import.meta.env.VITE_API_URL)
@@ -45,7 +48,8 @@ export default function GlobalProvider({ children }) {
             fetchParallelProduct,
             arrObjCompleto, setArrObjCompleto,
             
-            fetchRecordSmartphone, dataSmartphone
+            fetchRecordSmartphone, dataSmartphone,
+            smartphoneDetail,phoneDetail
         }}>
             {children}
         </GlobalContext.Provider>

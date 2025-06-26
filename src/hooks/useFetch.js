@@ -15,6 +15,9 @@ export default function useFetch(url) {
     //Ora Definisco un altro State per la chiamata in Promise all presa da arrConfronto
     const [arrObjCompleto, setArrObjCompleto] = useState([])
 
+    //Dati per Gestire la pagina di dettaglio di un singolo prodotto
+    const[phoneDetail,setphoneDetail] = useState([])
+
     //Gestione della lista smartphone sotto input
     const [showList, setShowList] = useState(false)
 
@@ -130,9 +133,34 @@ export default function useFetch(url) {
         }
     }
 
+    //Chiamata per andare al dettaglio di quel prodotto
+    async function smartphoneDetail(urlId) {
+        
+        //Prova ad eseguire questo se va male vai nel catch
+        try {
+            const response = await fetch(`${url}/products/${urlId}`)
+
+            //Gestisco la response
+            if (!response.ok) {
+                throw new Error(`Errore Http: ${response.status}`);
+            }
+
+            //converto in json
+            const convertJson = await response.json()
+
+            //aggiorno i dati
+            setphoneDetail(convertJson.product)
+
+        } catch (err) {
+            console.error(err)
+            throw new Error(`Server non raggiungibile:${err.message}`)
+
+        }
+    }
+
 
     return {
-        // Per chiamata filtro e categoria
+        // Per chiamata HOMEPAGE filtro PER TITLE E CATEGORIA 
         recordData, fetchRecord,
 
         // Per ricavarmi tutti i record per prendere solo le categorie
@@ -147,8 +175,11 @@ export default function useFetch(url) {
         //Arr dove all interno avremmo tutti i prodotti che abbiamo selezionato per il confroto con la sua funzione di aggiornamento
         arrObjCompleto, setArrObjCompleto,
 
-        //Per pagina prodotti smartphone filtro
-        fetchRecordSmartphone,dataSmartphone
+        //Per pagina PRODOTTI smartphone filtro PER TITLE E CATEGORIA 
+        fetchRecordSmartphone, dataSmartphone,
+
+        // Per Pagina di dettaglio di un singolo prodotto
+        smartphoneDetail,phoneDetail
     }
 
 }

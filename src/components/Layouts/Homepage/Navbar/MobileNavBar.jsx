@@ -25,9 +25,12 @@ export default function MobileNavBar({ show, closeNav }) {
       {/* NAV Link */}
       <div className="navlinks">
         {routes.map((rotta, index) => (
+          rotta.name ?
           <Link key={index} to={rotta.path}>
             {rotta.name}
           </Link>
+
+          : null
         ))}
 
         {/* IT E CUORE */}

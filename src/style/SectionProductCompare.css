@@ -77,6 +77,12 @@
     height: 190px;
 }
 
+.set-img-card a{
+    display: flex;
+    justify-content: center;
+    
+}
+
 .set-img-card img {
     width: 65%;
     height: 100%;

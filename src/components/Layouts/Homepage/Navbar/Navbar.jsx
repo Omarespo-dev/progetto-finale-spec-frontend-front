@@ -28,11 +28,17 @@ export default function Navbar({ openNav }) {
           <ul>
             {/* faccio map sempre sui routes cosi per rendere il tutto dinamico */}
             {routes.map(rotta => (
+
+              rotta.name ? 
+              
               <li key={rotta.id}>
                 <Link to={rotta.path}>
                   {rotta.name}
                 </Link>
               </li>
+              : 
+              null
+
             ))}
           </ul>
         </div>

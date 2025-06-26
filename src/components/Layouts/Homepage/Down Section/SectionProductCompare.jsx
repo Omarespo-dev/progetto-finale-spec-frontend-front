@@ -7,6 +7,7 @@ import { CiHeart } from "react-icons/ci";
 //importo context e global per prendere i dati dal global
 import { useContext, useEffect, useState } from 'react'
 import { GlobalContext } from '../../../../contexts/GlobalContext.jsx'
+import { Link } from 'react-router-dom';
 
 
 export default function SectionProductCompare() {
@@ -67,7 +68,7 @@ export default function SectionProductCompare() {
               </section>
 
               <section className="set-img-card">
-                <img src={product.image} alt={product.title} />
+                <Link to={`/smartphone/${product.id}`}> <img src={product.image} alt={product.title} /> </Link>
               </section>
 
               <section className="set-description">
