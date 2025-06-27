@@ -1,16 +1,17 @@
-# In corso.....
-1)Completato Layout Homepage e Logica di aggiunta prodotti ad array che sara quello che conterra il confronto sia per quello selezionato da input che per i Prodotti in Home 
+# FATTE
+1)Completato Layout Homepage e Logica di aggiunta prodotti ad array che sara quello che conterra il confronto sia per quello selezionato da input che per i Prodotti in Home ✅
 
-2)Completata layout e logica pagina Smartphone 
-3)Quasi completato anche la pagina di Dettaglio manca BUTTON (AGGIUNGI CONFRONTO)
+2)Completata layout e logica pagina Smartphone ✅
+3)Completato anche la pagina di Dettaglio manca BUTTON (AGGIUNGI CONFRONTO)✅
+4)Completata pagina di Compare con due prodotti da confronto✅
 
 
-# Cose da fare
-///Fare Pagina di confronto aggiungere elementi LOGICA GIA FATTA ///
+# Cose da fare...
+///Fare Pagina di confronto aggiungere elementi LOGICA GIA FATTA ///✅
 
-/// SIA IN HOME SIA IN SMARTPHONE E SIA NELLA PAGINA DI DETTAGLIO INOLTRE AGGIUNGERE ALERT CHE STARA IN BASSO A DESTRA CHE TERRA IL CONTEGGIO DI QUELL ARR ANCHE ALL AGGIUNTA DEL PRODOTTO AL CONFRONTO ///
+/// SIA IN HOME SIA IN SMARTPHONE E SIA NELLA PAGINA DI DETTAGLIO INOLTRE AGGIUNGERE ALERT CHE STARA IN BASSO A DESTRA CHE TERRA IL CONTEGGIO DI QUELL ARR ANCHE ALL AGGIUNTA DEL PRODOTTO AL CONFRONTO ///❌
 
-///Controllare Ogni Page per vedere se mancano Link o altro ///
+///Controllare Ogni Page per vedere se mancano Link o altro ///❌
 
 
 
@@ -38,9 +39,9 @@ Per considerare il progetto completo, devono essere implementate almeno queste f
 
     Pagina di dettaglio per ogni record, con visualizzazione estesa delle sue proprietà (es. price, description, brand, ecc.)✅
 
-    Comparatore di 2 record, visualizzati affiancati per confrontarne le caratteristiche.⚠️ {LOGICA GIA IMPLEMENTATA}
+    Comparatore di 2 record, visualizzati affiancati per confrontarne le caratteristiche.✅
 
-    È libera la modalità di selezione: puoi permettere all’utente di aggiungere record al comparatore direttamente dalla lista, dalla pagina di dettaglio, oppure usare un menu a tendina, checkbox o qualsiasi altro sistema.❌
+    È libera la modalità di selezione: puoi permettere all’utente di aggiungere record al comparatore direttamente dalla lista, dalla pagina di dettaglio, oppure usare un menu a tendina, checkbox o qualsiasi altro sistema.✅
 
     L’importante è che l’utente possa scegliere 2 record qualsiasi e confrontarli in modo chiaro.✅
 

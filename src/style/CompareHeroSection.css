@@ -1,0 +1,29 @@
+.card-compare-section-1{
+    background: #fff;
+    border-radius: 18px;
+    border: 2px solid #fc6d39;
+    width: 90%;
+    min-height: 500px;
+    padding: 28px 22px 22px 22px;
+    display: flex;
+    align-items: center;
+    box-shadow: 0 0 10px rgba(255, 107, 53, 0.5);
+    transition: box-shadow 0.2s;
+    margin-top: 150px;
+    margin-bottom: 100px;
+}
+
+.compare-name{
+    width: 100%;
+    text-align: center;
+    margin-bottom: 8px;
+}
+
+
+.compare-name h2{
+    font-size: 24px;
+    font-weight: 700;
+    margin: 0 0 6px 0;
+    color: #fc6d39;
+    text-shadow: 0 0 10px rgba(255, 107, 53, 0.5);
+}

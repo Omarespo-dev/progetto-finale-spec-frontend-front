@@ -9,14 +9,14 @@ import { useParams } from "react-router-dom"
 export default function HeroSmarthphoneDetail() {
 
     //Ricavo dati dal context
-    const { 
+    const {
         // //Ricavo arr di obj dove all interno ci sarro tutti quelli che saranno contenuti per il confronto
-        // setArrObjCompleto, arrObjCompleto,
+        setArrObjCompleto, arrObjCompleto,
 
         //Per singolo dettaglio
         smartphoneDetail, phoneDetail } = useContext(GlobalContext)
 
-    
+
     //prendo ID dal url
     let { id } = useParams()
 
@@ -27,14 +27,32 @@ export default function HeroSmarthphoneDetail() {
 
 
     //debug
-    console.log(phoneDetail);
+    // console.log(phoneDetail);
 
+    //Function per aggiungere il prodotto al arrObjCompleto che include tutto
+    function addProduct(prod) {
+
+        // PRIMA controlla il limite se la sua length e maggiore di 2 dammi l alert e non farmi niente
+        if (arrObjCompleto.length >= 2) {
+            alert("Hai raggiunto il massimo che puoi mettere")
+            return
+        }
+
+        //verifico se e gia prensente un oggetto con lo stesso id del prodotto
+        const giaPresente = arrObjCompleto.some(item => item.id === prod.id)
+
+        //se non e presente mi aggiorni setArrObjCompleto con al copia di arrObjCompleto e mi agigungi il prod passato come parametro alla funzione
+        if (!giaPresente) {
+            setArrObjCompleto([...arrObjCompleto, prod])
+        }
+    }
 
     return (<>
         <div className="container-hero-detail">
             {/* Prodotto 1 */}
-            
+
             <div className="card-compare-detail-1" key={phoneDetail.id}>
+                <button onClick={() => addProduct(phoneDetail)}>Aggiungi al Confronto</button>
                 <div className="detail-name">
                     <h2>{phoneDetail.title}</h2>
                     <p>{phoneDetail.rating}</p>

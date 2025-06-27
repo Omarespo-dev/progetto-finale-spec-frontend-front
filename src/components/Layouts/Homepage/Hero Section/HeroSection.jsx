@@ -183,7 +183,7 @@ export default function HeroSection() {
 
                     </select>
 
-                    <button onClick={addObjCompare}>Confronta</button>
+                    <button onClick={addObjCompare}>Aggiungi al Confronto</button>
                 </div>
 
             </div>

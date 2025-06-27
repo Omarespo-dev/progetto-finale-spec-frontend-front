@@ -37,14 +37,16 @@ export default function SectionAllSmartphone() {
     //Function per aggiungere il prodotto al arrObjCompleto che include tutto
     function addProduct(prod) {
 
-        // PRIMA controlla il limite
+        // PRIMA controlla il limite se la sua length e maggiore di 2 dammi l alert e non farmi niente
         if (arrObjCompleto.length >= 2) {
             alert("Hai raggiunto il massimo che puoi mettere")
             return
         }
 
+        //verifico se e gia prensente un oggetto con lo stesso id del prodotto
         const giaPresente = arrObjCompleto.some(item => item.id === prod.id)
 
+        //se non e presente mi aggiorni setArrObjCompleto con al copia di arrObjCompleto e mi agigungi il prod passato come parametro alla funzione
         if (!giaPresente) {
             setArrObjCompleto([...arrObjCompleto, prod])
         }
