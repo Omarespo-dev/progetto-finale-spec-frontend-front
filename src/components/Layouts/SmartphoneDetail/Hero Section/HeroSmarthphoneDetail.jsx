@@ -4,7 +4,13 @@ import "../../../../style/HeroSmartphoneDetail.css"
 //contex dati
 import { useContext, useEffect } from "react"
 import { GlobalContext } from "../../../../contexts/GlobalContext"
+
+//Ricavo id dall url
 import { useParams } from "react-router-dom"
+
+
+//IMPORTO TOAST ALERT
+import { toast } from 'react-toastify';
 
 export default function HeroSmarthphoneDetail() {
 
@@ -34,7 +40,7 @@ export default function HeroSmarthphoneDetail() {
 
         // PRIMA controlla il limite se la sua length e maggiore di 2 dammi l alert e non farmi niente
         if (arrObjCompleto.length >= 2) {
-            alert("Hai raggiunto il massimo che puoi mettere")
+            toast.error("Hai raggiunto il massimo nel Comparatore")
             return
         }
 
@@ -44,6 +50,9 @@ export default function HeroSmarthphoneDetail() {
         //se non e presente mi aggiorni setArrObjCompleto con al copia di arrObjCompleto e mi agigungi il prod passato come parametro alla funzione
         if (!giaPresente) {
             setArrObjCompleto([...arrObjCompleto, prod])
+            toast.success("Prodotto aggiunto al comparatore")
+        } else {
+            toast.error("Hai aggiunto lo stesso prodotto");
         }
     }
 

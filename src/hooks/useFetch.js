@@ -33,7 +33,7 @@ export default function useFetch(url) {
 
         //Prova ad eseguire questo se va male vai nel catch
         try {
-            const response = await fetch(`${url}/products?search=${searchInputTitle}&category=${categoryInput}`)
+            const response = await fetch(`${url}/products?search=${searchInputTitle.trim()}&category=${categoryInput}`)
 
             //Gestisco la response
             if (!response.ok) {

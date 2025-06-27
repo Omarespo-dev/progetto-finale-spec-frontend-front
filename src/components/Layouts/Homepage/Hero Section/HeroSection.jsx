@@ -8,6 +8,11 @@ import Typewriter from 'typewriter-effect';
 //Importo context per avere dati
 import { GlobalContext } from '../../../../contexts/GlobalContext';
 
+
+//IMPORTO TOAST ALERT
+import { toast } from 'react-toastify';
+
+
 export default function HeroSection() {
 
     //Gestione Stato per Input
@@ -71,24 +76,30 @@ export default function HeroSection() {
     function addObjCompare() {
         // PRIMA controlla il limite
         if (arrObjCompleto.length >= 2) {
-            alert("Hai raggiunto il massimo che puoi mettere")
+            toast.error("Hai raggiunto il massimo nel Comparatore")
             setInput('')
             setInputSelect('')
-            return 
+            return
         }
-
 
         //CERCO NELL ARR RECOR-DATA SE L OGGETTO E === INPUT SELEZIONATO
         const verifico = recordData.find(obj => obj.title === input)
 
         //SE E VERO ALLORA TU MI VERIFICHI SE ANCHE QUEL OGGETTO E GIA PRESENTE NELL ARR OGGETTO PK SE FOSSE VERO CHE HANNO ID UGUALI ALLORA RITORNI L ARR ALTRIMENTI MI FAI LA COPIA DELL ARR E MI AGGIUNGI L OGGETTO
         if (verifico) {
-            setArrConfronto(arr => arr.some(item => item.id === verifico.id) ? arr : [...arr, verifico])
+            // Calcolo se è duplicato PRIMA del setState
+            const isDuplicate = arrConfronto.some(item => item.id === verifico.id);
+            if (isDuplicate) {
+                toast.error("Hai aggiunto lo stesso prodotto");
+                
+            } else {
+                setArrConfronto(arr => [...arr, verifico]);
+                toast.success("Prodotto aggiunto al comparatore");
+            }
         }
 
         //resetto input
         setInput('')
-
     }
 
     //faccio la chiamata al montaggio del componente e al cambiare di agggiunta al prodotto nell arrConfronto

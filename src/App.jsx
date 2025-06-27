@@ -12,10 +12,28 @@ import Footer from './components/Layouts/Homepage/Footer/Footer';
 import GlobalProvider from './contexts/GlobalContext';
 
 
+//Importo alert da libreria
+import { Slide, ToastContainer } from 'react-toastify';
+
+
 function App() {
 
 
-  return (
+  return (<>
+    <ToastContainer
+      position="bottom-right"
+      autoClose={5000}
+      hideProgressBar={false}
+      newestOnTop={false}
+      closeOnClick={false}
+      rtl={false}
+      pauseOnFocusLoss
+      draggable
+      pauseOnHover
+      theme="light"
+      transition={Slide}
+    />
+
     <GlobalProvider>
       <BrowserRouter>
 
@@ -35,6 +53,8 @@ function App() {
         <Footer />
       </BrowserRouter>
     </GlobalProvider>
+
+  </>
 
   )
 }
