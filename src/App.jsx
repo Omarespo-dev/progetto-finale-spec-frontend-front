@@ -13,7 +13,7 @@ import GlobalProvider from './contexts/GlobalContext';
 
 
 //Importo alert da libreria
-import { Slide, ToastContainer } from 'react-toastify';
+import { Bounce, Slide, ToastContainer } from 'react-toastify';
 
 
 function App() {
@@ -30,8 +30,8 @@ function App() {
       pauseOnFocusLoss
       draggable
       pauseOnHover
-      theme="light"
-      transition={Slide}
+      theme="dark"
+      transition={Bounce}
     />
 
     <GlobalProvider>

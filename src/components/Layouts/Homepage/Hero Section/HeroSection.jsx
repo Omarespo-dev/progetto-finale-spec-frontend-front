@@ -11,6 +11,7 @@ import { GlobalContext } from '../../../../contexts/GlobalContext';
 
 //IMPORTO TOAST ALERT
 import { toast } from 'react-toastify';
+import { Link, useNavigate } from 'react-router-dom';
 
 
 export default function HeroSection() {
@@ -35,6 +36,8 @@ export default function HeroSection() {
         fetchParallelProduct, arrObjCompleto
 
     } = useContext(GlobalContext)
+
+    const navigate = useNavigate(); // Hook per navigazione programmatica
 
 
     //uso UseEffect per non fare chiamate illimitate inoltre mi deve rifare la funzione  anche quando cambia input e il selectInput
@@ -75,7 +78,7 @@ export default function HeroSection() {
     //Funzione Confronta button
     function addObjCompare() {
         // PRIMA controlla il limite
-        if (arrObjCompleto.length >= 2) {
+        if (arrObjCompleto.length >= 5) {
             toast.error("Hai raggiunto il massimo nel Comparatore")
             setInput('')
             setInputSelect('')
@@ -91,10 +94,31 @@ export default function HeroSection() {
             const isDuplicate = arrConfronto.some(item => item.id === verifico.id);
             if (isDuplicate) {
                 toast.error("Hai aggiunto lo stesso prodotto");
-                
             } else {
                 setArrConfronto(arr => [...arr, verifico]);
-                toast.success("Prodotto aggiunto al comparatore");
+                toast.success(
+                    <span>
+                        Prodotto aggiunto al comparatore: {arrObjCompleto.length + 1}
+                        <button
+                            style={{
+                                color: "white",
+                                textDecoration: "none",
+                                backgroundColor:" #fc6d39",
+                                border: "none",
+                                cursor: "pointer",
+                                padding: "7px 15px",
+                                font: "inherit",
+                                marginTop:"10px",
+                                
+                                borderRadius:"20px"
+                                
+                            }}
+                            onClick={() => navigate("/compare")}
+                        >
+                            Vai al confronto
+                        </button>
+                    </span>
+                );
             }
         }
 

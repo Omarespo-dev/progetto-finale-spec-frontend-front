@@ -10,7 +10,7 @@ import { useContext, useEffect, useState } from 'react'
 import { GlobalContext } from '../../../../contexts/GlobalContext'
 
 //Importo Link per routing
-import { Link } from 'react-router-dom';
+import { Link, Navigate, useNavigate } from 'react-router-dom';
 
 //IMPORTO TOAST ALERT
 import { toast } from 'react-toastify';
@@ -39,12 +39,13 @@ export default function SectionAllSmartphone() {
 
     } = useContext(GlobalContext)
 
+    const navigate = useNavigate(); // Hook per navigazione programmatica
 
     //Function per aggiungere il prodotto al arrObjCompleto che include tutto
     function addProduct(prod) {
 
         // PRIMA controlla il limite se la sua length e maggiore di 2 dammi l alert e non farmi niente
-        if (arrObjCompleto.length >= 2) {
+        if (arrObjCompleto.length >= 5) {
             toast.error("Hai raggiunto il massimo nel Comparatore")
             return
         }
@@ -55,7 +56,29 @@ export default function SectionAllSmartphone() {
         //se non e presente mi aggiorni setArrObjCompleto con al copia di arrObjCompleto e mi agigungi il prod passato come parametro alla funzione
         if (!giaPresente) {
             setArrObjCompleto([...arrObjCompleto, prod])
-            toast.success("Prodotto aggiunto al comparatore")
+            toast.success(
+                <span>
+                    Prodotto aggiunto al comparatore: {arrObjCompleto.length + 1}
+                    <button
+                        style={{
+                            color: "white",
+                            textDecoration: "none",
+                            backgroundColor: " #fc6d39",
+                            border: "none",
+                            cursor: "pointer",
+                            padding: "7px 15px",
+                            font: "inherit",
+                            marginTop: "10px",
+                            
+                            borderRadius: "20px"
+
+                        }}
+                        onClick={() => navigate("/compare")}
+                    >
+                        Vai al confronto
+                    </button>
+                </span>
+            );
         } else {
             toast.error("Hai aggiunto lo stesso prodotto");
         }
