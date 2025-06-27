@@ -1,7 +1,11 @@
 
+//CompareHero
+import CompareHeroSection from "../components/Layouts/ComparePage/Hero Section/CompareHeroSection"
 
 export default function ComparePage() {
   return (
-    <div>ComparePage</div>
+    <main>
+      <CompareHeroSection />
+    </main>
   )
 }
