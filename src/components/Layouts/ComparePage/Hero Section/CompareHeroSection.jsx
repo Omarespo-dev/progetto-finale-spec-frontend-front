@@ -5,7 +5,10 @@ import { GlobalContext } from "../../../../contexts/GlobalContext";
 
 //import css
 import "../../../../style/CompareHeroSection.css"
-import { Link} from "react-router-dom";
+import { Link } from "react-router-dom";
+
+// close icon
+import { IoIosClose } from "react-icons/io";
 
 export default function CompareHeroSection() {
     //Ricavo dati dal context
@@ -18,28 +21,36 @@ export default function CompareHeroSection() {
     //log dati di confroto [{}]
     console.log(arrObjCompleto);
 
-    
+    //funzione deleteSingle Card
+    function deleteCard(prod){
+        //filtro su arrObj confrontando se oggetto.id e === al prod.id me lo scarti altrimenti se e diverso conservi
+        const deleteProd = arrObjCompleto.filter(item => item.id !== prod)
+
+        //aggiorno setArrobj con deleteProd
+        setArrObjCompleto(deleteProd)
+    }
 
 
     return (<>
-        <div className="container-hero-detail">
+        <div className="compare-container-hero-detail">
             {/* Prodotto 1 */}
 
             {arrObjCompleto.length > 0 ?
                 arrObjCompleto.map((prod, index) => (
                     <React.Fragment key={prod.id}>
-                        <div className="card-compare-detail-1" style={{ width: "20%" }}>
-                            <div className="detail-name">
+                        <div className="compare-card-compare-detail-1" style={{ width: "20%" }}>
+                            <button id="compare-close-btn" onClick={() => deleteCard(prod.id)}><span><IoIosClose /></span></button>
+                            <div className="compare-detail-name">
                                 <h2>{prod.title}</h2>
                                 <p>{prod.rating}</p>
                             </div>
-                            <div className="detail-img">
+                            <div className="compare-detail-img">
                                 <img src={prod.image} alt={prod.title} />
                             </div>
-                            <div className="detail-price">
+                            <div className="compare-detail-price">
                                 <h3>{prod.price}€</h3>
                             </div>
-                            <div className="detail-specs">
+                            <div className="compare-detail-specs">
                                 <ul>
                                     <li><b>Brand:</b> {prod.brand}</li>
                                     <li><b>Batteria:</b> {prod.specs?.battery}</li>
@@ -61,7 +72,7 @@ export default function CompareHeroSection() {
                         </div>
 
                         {index < arrObjCompleto.length - 1 && (
-                            <div className="vs-divider" >
+                            <div className="compare-vs-divider" >
                                 <h2>VS</h2>
                             </div>)}
 
@@ -72,17 +83,14 @@ export default function CompareHeroSection() {
 
                 ))
                 :
-                <div className="card-compare-section-1">
-                    <div className="compare-name">
+                <div className="compare-card-compare-section-1">
+                    <div className="compare-compare-name">
                         <h2>Nessun Prodotto Aggiunto al Confronto</h2>
-                       <Link to="/smartphone"> <button >Vai alla lista Prodotti</button> </Link>
+                        <Link to="/smartphone"> <button >Vai alla lista Prodotti</button> </Link>
                     </div>
 
                 </div>
             }
-
-
-
 
 
 
