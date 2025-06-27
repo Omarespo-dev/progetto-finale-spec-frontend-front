@@ -9,7 +9,7 @@
 # Cose da fare...
 ///Fare Pagina di confronto aggiungere elementi LOGICA GIA FATTA ///✅
 
-/// SIA IN HOME SIA IN SMARTPHONE E SIA NELLA PAGINA DI DETTAGLIO INOLTRE AGGIUNGERE ALERT CHE STARA IN BASSO A DESTRA CHE TERRA IL CONTEGGIO DI QUELL ARR ANCHE ALL AGGIUNTA DEL PRODOTTO AL CONFRONTO ///❌
+/// SIA IN HOME SIA IN SMARTPHONE E SIA NELLA PAGINA DI DETTAGLIO INOLTRE AGGIUNGERE ALERT CHE STARA IN BASSO A DESTRA CHE TERRA IL CONTEGGIO DI QUELL ARR ANCHE ALL AGGIUNTA DEL PRODOTTO AL CONFRONTO ///✅
 
 ///Controllare Ogni Page per vedere se mancano Link o altro ///❌
 
@@ -55,12 +55,14 @@ Per considerare il progetto completo, devono essere implementate almeno queste f
 Da affrontare solo dopo aver completato i Requisiti Minimi:
 
     Comparatore di 2 o più record: il layout si adatta per confrontare più elementi affiancati
-    Debounce sulla ricerca, per migliorare la UX ed evitare chiamate API inutili
-    Persistenza dei preferiti (es. salvataggio in localStorage), così che rimangano anche dopo il refresh della pagina
+    (⚠️ Aggiustare solo layout)
+
+    Debounce sulla ricerca, per migliorare la UX ed evitare chiamate API inutili❌
+    Persistenza dei preferiti (es. salvataggio in localStorage), così che rimangano anche dopo il refresh della pagina❌
     Gestione degli stati vuoti, come:
-        Nessun risultato trovato
+        Nessun risultato trovato✅
         Lista preferiti vuota
-        Nessun elemento selezionato nel comparatore
+        Nessun elemento selezionato nel comparatore✅
 
 
 ## 🥇 Requisiti Aggiuntivi (Facoltativi)

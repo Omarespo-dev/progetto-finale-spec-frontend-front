@@ -1,7 +1,7 @@
-.card-compare-section-1{
-    background: #fff;
+.card-compare-section-1 {
+
     border-radius: 18px;
-    border: 2px solid #fc6d39;
+    border: 2px dotted #fc6d39;
     width: 90%;
     min-height: 500px;
     padding: 28px 22px 22px 22px;
@@ -13,17 +13,32 @@
     margin-bottom: 100px;
 }
 
-.compare-name{
+.compare-name {
     width: 100%;
     text-align: center;
     margin-bottom: 8px;
+    
 }
 
 
-.compare-name h2{
+.compare-name h2 {
     font-size: 24px;
     font-weight: 700;
     margin: 0 0 6px 0;
     color: #fc6d39;
     text-shadow: 0 0 10px rgba(255, 107, 53, 0.5);
+    margin-bottom: 10px;
+}
+
+
+
+.compare-name button {
+    cursor: pointer;
+    padding: 12px 24px;
+    border: none;
+    background-color: #fc6d39;
+    color: white;
+    transition: background-color 0.3s ease;
+    border-radius: 999px;
+
 }

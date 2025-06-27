@@ -5,6 +5,7 @@ import { GlobalContext } from "../../../../contexts/GlobalContext";
 
 //import css
 import "../../../../style/CompareHeroSection.css"
+import { Link} from "react-router-dom";
 
 export default function CompareHeroSection() {
     //Ricavo dati dal context
@@ -12,14 +13,12 @@ export default function CompareHeroSection() {
         // Ricavo arr di obj dove all interno ci sarro tutti quelli che saranno contenuti per il confronto
         setArrObjCompleto, arrObjCompleto,
 
-    } = useContext(GlobalContext
-
-    )
+    } = useContext(GlobalContext)
 
     //log dati di confroto [{}]
     console.log(arrObjCompleto);
 
-
+    
 
 
     return (<>
@@ -76,6 +75,7 @@ export default function CompareHeroSection() {
                 <div className="card-compare-section-1">
                     <div className="compare-name">
                         <h2>Nessun Prodotto Aggiunto al Confronto</h2>
+                       <Link to="/smartphone"> <button >Vai alla lista Prodotti</button> </Link>
                     </div>
 
                 </div>

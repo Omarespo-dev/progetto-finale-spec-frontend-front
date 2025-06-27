@@ -89,7 +89,7 @@ export default function SectionProductCompare() {
         <div className="smartphone-evidenza-container">
           <h2>Smartphone in <span className="highlight">Evidenza </span></h2>
           <p>Le nostre selezioni più consigliate, scelte appositamente per te.</p>
-          <button>Vedi Tutti gli Smartphone</button>
+          <Link to="/smartphone"> <button >Vedi Tutti gli Smartphone</button> </Link>
         </div>
 
         <div className="smartphone-card">

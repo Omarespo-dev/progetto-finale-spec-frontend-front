@@ -13,7 +13,23 @@ import { CiHeart } from "react-icons/ci";
 //importo burger menu
 import { HiBars3BottomRight } from "react-icons/hi2";
 
+
+
+import { useContext } from "react";
+import { GlobalContext } from "../../../../contexts/GlobalContext";
+
+
+
 export default function Navbar({ openNav }) {
+
+  //Ricavo dati dal context
+  const {
+    // Ricavo arr di obj dove all interno ci sarro tutti quelli che saranno contenuti per il confronto
+    arrObjCompleto,
+
+  } = useContext(GlobalContext)
+
+
   return (
     <div className="container-navbar">
       <div className="container-flex">
@@ -29,15 +45,17 @@ export default function Navbar({ openNav }) {
             {/* faccio map sempre sui routes cosi per rendere il tutto dinamico */}
             {routes.map(rotta => (
 
-              rotta.name ? 
-              
-              <li key={rotta.id}>
-                <Link to={rotta.path}>
-                  {rotta.name}
-                </Link>
-              </li>
-              : 
-              null
+              rotta.name ?
+
+                <li key={rotta.id} 
+                className={rotta.name === "Compare" && arrObjCompleto.length > 0 ? "compare-active" : ""}
+                >
+                  <Link to={rotta.path}>
+                    {rotta.name}
+                  </Link>
+                </li>
+                :
+                null
 
             ))}
           </ul>
