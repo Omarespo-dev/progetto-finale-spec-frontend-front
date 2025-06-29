@@ -54,8 +54,8 @@ Per considerare il progetto completo, devono essere implementate almeno queste f
 ## 🥈 Requisiti Consigliati (Facoltativi)
 Da affrontare solo dopo aver completato i Requisiti Minimi:
 
-    Comparatore di 2 o più record: il layout si adatta per confrontare più elementi affiancati
-    (⚠️ Aggiustare solo layout)
+    Comparatore di 2 o più record: il layout si adatta per confrontare più elementi affiancati✅
+    
 
     Debounce sulla ricerca, per migliorare la UX ed evitare chiamate API inutili❌
     Persistenza dei preferiti (es. salvataggio in localStorage), così che rimangano anche dopo il refresh della pagina❌
