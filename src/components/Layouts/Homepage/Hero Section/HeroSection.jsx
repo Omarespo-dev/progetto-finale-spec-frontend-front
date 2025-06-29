@@ -78,7 +78,7 @@ export default function HeroSection() {
     //Funzione Confronta button
     function addObjCompare() {
         // PRIMA controlla il limite
-        if (arrObjCompleto.length >= 5) {
+        if (arrObjCompleto.length >= 3) {
             toast.error("Hai raggiunto il massimo nel Comparatore")
             setInput('')
             setInputSelect('')

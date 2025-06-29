@@ -51,7 +51,7 @@ export default function SectionAllSmartphone() {
     function addProduct(prod) {
 
         // PRIMA controlla il limite se la sua length e maggiore di 2 dammi l alert e non farmi niente
-        if (arrObjCompleto.length >= 5) {
+        if (arrObjCompleto.length >= 3) {
             toast.error("Hai raggiunto il massimo nel Comparatore")
             return
         }
