@@ -26,19 +26,21 @@ export default function MobileNavBar({ show, closeNav }) {
       <div className="navlinks">
         {routes.map((rotta, index) => (
           rotta.name ?
-          <Link key={index} to={rotta.path}>
-            {rotta.name}
-          </Link>
+            <Link key={index} to={rotta.path}>
+              {rotta.name}
+            </Link>
 
-          : null
+            : null
         ))}
 
         {/* IT E CUORE */}
         <ul className="element">
           <li>IT</li>
-          <li>
-            <CiHeart />
-          </li>
+          <Link to="/wishlist" style={{ textDecoration: "none", color: "black" }}>
+            <li>
+              <CiHeart />
+            </li>
+          </Link>
 
         </ul>
 

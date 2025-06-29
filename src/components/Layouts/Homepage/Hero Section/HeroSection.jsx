@@ -33,7 +33,7 @@ export default function HeroSection() {
         setShowList, showList,
 
         //Per chiamata parallelo per ricavare obj dall id
-        fetchParallelProduct, arrObjCompleto
+        fetchParallelProduct, arrObjCompleto,
 
     } = useContext(GlobalContext)
 
@@ -93,7 +93,7 @@ export default function HeroSection() {
             // Calcolo se è duplicato PRIMA del setState
             const isDuplicate = arrConfronto.some(item => item.id === verifico.id);
             if (isDuplicate) {
-                toast.error("Hai aggiunto lo stesso prodotto");
+                toast.error("Hai aggiunto lo stesso prodotto nel Comparatore");
             } else {
                 setArrConfronto(arr => [...arr, verifico]);
                 toast.success(
@@ -131,8 +131,9 @@ export default function HeroSection() {
         fetchParallelProduct(arrConfronto)
     }, [arrConfronto])
 
-    //DEBUG 
-    console.log(arrObjCompleto);
+    //DEBUG per arr di oggetti per il confronto
+    // console.log(arrObjCompleto);
+
 
 
 

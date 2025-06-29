@@ -34,8 +34,9 @@ function App() {
       transition={Bounce}
     />
 
-    <GlobalProvider>
-      <BrowserRouter>
+    <BrowserRouter>
+      <GlobalProvider>
+
 
         {/* Navbar completa anche con responsive */}
         <NavbarWithResponsive />
@@ -51,9 +52,9 @@ function App() {
 
         {/* Footer */}
         <Footer />
-      </BrowserRouter>
-    </GlobalProvider>
 
+      </GlobalProvider>
+    </BrowserRouter>
   </>
 
   )

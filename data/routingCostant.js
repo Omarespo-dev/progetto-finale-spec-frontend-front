@@ -5,6 +5,7 @@ import ContactPage from "../src/pages/ContactPage";
 import SmartphonePage from "../src/pages/SmartphonePage";
 import SmartphoneDetail from "../src/pages/SmartphoneDetail";
 import ComparePage from "../src/pages/ComparePage";
+import WishlistPage from "../src/pages/WishlistPage";
 
 const routes = [
     {
@@ -32,10 +33,15 @@ const routes = [
     },
     {
         id: 5,
-        path: '/contact',
-        name: 'Contattaci',
-        component: ContactPage 
+        path: '/wishlist',
+        component: WishlistPage
     },
+    // {
+    //     id: 6,
+    //     path: '/contact',
+    //     name: 'Contattaci',
+    //     component: ContactPage 
+    // },
 ];
 
 export default routes

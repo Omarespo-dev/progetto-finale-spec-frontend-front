@@ -14,7 +14,7 @@ import { CiHeart } from "react-icons/ci";
 import { HiBars3BottomRight } from "react-icons/hi2";
 
 
-
+//Importo dati dal context
 import { useContext } from "react";
 import { GlobalContext } from "../../../../contexts/GlobalContext";
 
@@ -47,8 +47,8 @@ export default function Navbar({ openNav }) {
 
               rotta.name ?
 
-                <li key={rotta.id} 
-                className={rotta.name === "Compare" && arrObjCompleto.length > 0 ? "compare-active" : ""}
+                <li key={rotta.id}
+                  className={rotta.name === "Compare" && arrObjCompleto.length > 0 ? "compare-active" : ""}
                 >
                   <Link to={rotta.path}>
                     {rotta.name}
@@ -65,9 +65,12 @@ export default function Navbar({ openNav }) {
         <div className="third-element">
           <ul>
             <li>IT</li>
-            <li>
-              <CiHeart />
-            </li>
+
+            <Link to="/wishlist" style={{textDecoration:"none",color:"black"}}>
+              <li>
+                <CiHeart />
+              </li>
+            </Link>
 
           </ul>
 

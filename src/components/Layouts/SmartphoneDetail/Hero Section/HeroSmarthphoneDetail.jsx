@@ -75,7 +75,7 @@ export default function HeroSmarthphoneDetail() {
                 </span>
             );
         } else {
-            toast.error("Hai aggiunto lo stesso prodotto");
+            toast.error("Hai aggiunto lo stesso prodotto nel Comparatore");
         }
     }
 

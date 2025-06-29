@@ -18,7 +18,10 @@ import { toast } from 'react-toastify';
 export default function SectionProductCompare() {
 
   //Prendere i prodotti dai record almeno 6 la chiamata ai record sta in useFetch
-  const { fetchParallelProduct, dataCategory, setArrObjCompleto, arrObjCompleto } = useContext(GlobalContext)
+  const { fetchParallelProduct, dataCategory, setArrObjCompleto, arrObjCompleto,
+    //Per wishlist con funzione di aggiunta
+    wishlist, addToWishlist
+  } = useContext(GlobalContext)
 
   //Dati presi dalla chiamata in parallelo
   const [datiObj, setDatiObj] = useState([])
@@ -64,7 +67,7 @@ export default function SectionProductCompare() {
               padding: "7px 15px",
               font: "inherit",
               marginTop: "10px",
-              
+
               borderRadius: "20px"
 
             }}
@@ -75,11 +78,18 @@ export default function SectionProductCompare() {
         </span>
       );
     } else {
-      toast.error("Hai aggiunto lo stesso prodotto");
+      toast.error("Hai aggiunto lo stesso prodotto nel Comparatore");
     }
 
 
   }
+
+
+
+  ///////////////////////////////////////////////////////////
+  //Gestione wishlist
+
+  console.log(wishlist);
 
   return (
     <div className="container-smartphone-compare">
@@ -99,7 +109,7 @@ export default function SectionProductCompare() {
           {sixObj.length > 0 ? sixObj.map(product => (
             <div className="card-evidenza" key={product.id}>
               <section className="set-cuore-card">
-                <CiHeart />
+                <CiHeart onClick={() => addToWishlist(product)} style={{color: wishlist.some(item => item.id === product.id) ? "red" : "black"}} />
               </section>
 
               <section className="set-img-card">

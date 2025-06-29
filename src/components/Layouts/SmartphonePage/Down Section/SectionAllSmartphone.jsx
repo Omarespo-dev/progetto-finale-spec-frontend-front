@@ -35,7 +35,13 @@ export default function SectionAllSmartphone() {
         //Per chiamata parallelo per ricavare obj dall id
         fetchParallelProduct,
 
-        arrObjCompleto, setArrObjCompleto
+        //arr di oggetti per il confronto con la sua funzione di aggiornamento
+        arrObjCompleto, setArrObjCompleto,
+
+
+        //Per wishlist con funzione di aggiunta
+        wishlist, addToWishlist
+
 
     } = useContext(GlobalContext)
 
@@ -69,7 +75,7 @@ export default function SectionAllSmartphone() {
                             padding: "7px 15px",
                             font: "inherit",
                             marginTop: "10px",
-                            
+
                             borderRadius: "20px"
 
                         }}
@@ -80,7 +86,7 @@ export default function SectionAllSmartphone() {
                 </span>
             );
         } else {
-            toast.error("Hai aggiunto lo stesso prodotto");
+            toast.error("Hai aggiunto lo stesso prodotto nel Comparatore");
         }
     }
 
@@ -190,6 +196,13 @@ export default function SectionAllSmartphone() {
 
 
 
+
+    ///////////////////////////////////////////////////////////
+    //Gestione wishlist
+
+    console.log(wishlist);
+
+
     return (
         <div className="container-smartphone-compare">
 
@@ -248,7 +261,7 @@ export default function SectionAllSmartphone() {
                     {orderAtoZ.length > 0 ? orderAtoZ.map(product => (
                         <div className="card-evidenza" key={product.id}>
                             <section className="set-cuore-card">
-                                <CiHeart />
+                                <CiHeart onClick={() => addToWishlist(product)} style={{color: wishlist.some(item => item.id === product.id) ? "red" : "black"}}/>
                             </section>
 
                             <section className="set-img-card">
