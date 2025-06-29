@@ -11,9 +11,9 @@
 
 /// SIA IN HOME SIA IN SMARTPHONE E SIA NELLA PAGINA DI DETTAGLIO INOLTRE AGGIUNGERE ALERT CHE STARA IN BASSO A DESTRA CHE TERRA IL CONTEGGIO DI QUELL ARR ANCHE ALL AGGIUNTA DEL PRODOTTO AL CONFRONTO ///✅
 
-///Controllare Ogni Page per vedere se mancano Link o altro ///❌
+///Controllare Ogni Page per vedere se mancano Link o altro ///✅
 
-
+///Controllare tutto il progetto e vedere cosa si puo ottimizare con react memo / useMemo / useCallback ///❌
 
 # Progetto Finale
 🖼️ Cosa devi realizzare
@@ -45,9 +45,9 @@ Per considerare il progetto completo, devono essere implementate almeno queste f
 
     L’importante è che l’utente possa scegliere 2 record qualsiasi e confrontarli in modo chiaro.✅
 
-    Sistema di preferiti, sempre accessibile e aggiornabile:❌
-        L’utente può aggiungere o rimuovere record dai preferiti in qualsiasi momento❌
-        I preferiti devono essere consultabili in ogni sezione dell’app (es. tramite una sezione dedicata, un’icona fissa, o una sidebar)❌
+    Sistema di preferiti, sempre accessibile e aggiornabile:✅
+        L’utente può aggiungere o rimuovere record dai preferiti in qualsiasi momento✅
+        I preferiti devono essere consultabili in ogni sezione dell’app (es. tramite una sezione dedicata, un’icona fissa, o una sidebar)✅
 
 
 
@@ -61,7 +61,7 @@ Da affrontare solo dopo aver completato i Requisiti Minimi:
     Persistenza dei preferiti (es. salvataggio in localStorage), così che rimangano anche dopo il refresh della pagina❌
     Gestione degli stati vuoti, come:
         Nessun risultato trovato✅
-        Lista preferiti vuota
+        Lista preferiti vuota✅
         Nessun elemento selezionato nel comparatore✅
 
 
