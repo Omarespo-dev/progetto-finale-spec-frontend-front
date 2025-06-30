@@ -1,6 +1,6 @@
 
 //Importiamo il contesto 
-import { createContext, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 
 //Definiamo il Global Context
 const GlobalContext = createContext()
@@ -11,6 +11,7 @@ export { GlobalContext };
 import useFetch from "../hooks/useFetch";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
+import { WiSleet } from "react-icons/wi";
 
 // Funzione da rendere disponibile in tutto il codice
 export default function GlobalProvider({ children }) {
@@ -45,7 +46,29 @@ export default function GlobalProvider({ children }) {
     //////////////////////////////////////////////////////////////////////////////////
     //GESTIONE DELLA WISHLIST
     //stato per dati per conservare oggetto nella wishlist []
-    const [wishlist, setWishlist] = useState([])
+
+
+    //1) React esegue questa funzione una volta sola, al primo render del componente. 
+    //2)  Questo serve a leggere dal localStorage solo una volta, e non ogni volta che il componente si ricarica.
+
+    const [wishlist, setWishlist] = useState(() => {   //funzione anonima
+
+        //leggi dal browser se c'e la chiave wishlist
+        const salvata = localStorage.getItem("wishlist")
+
+        //se c e allora prendi quei dati dalle wishlist e li converti in un arr pk con getItem legge l array come tutta una stringa //// se non c e niente nella wishlist restituisci []
+        return salvata ? JSON.parse(salvata) : []
+    })
+
+
+    //Ora per salvare automaticamente nel localstorage ogni volta che cambia la wishlist quindi (aggiunta prodotto-rimozione etc..)
+    //usiamo useEffect
+    useEffect(() => {
+        //Prende il tuo array o oggetto wishlist e trasformalo in stringa JSON pk il browser riesce a leggere solo cosi
+        //E Salva questa stringa dentro il localStorage del browser, con chiave "wishlist".
+        localStorage.setItem("wishlist", JSON.stringify(wishlist))
+    },[wishlist]) //Mi fai questo al montaggio del componente e al cambiare della wishlist
+
 
     const navigate = useNavigate(); // Hook per navigazione programmatica
 
@@ -87,7 +110,7 @@ export default function GlobalProvider({ children }) {
     }
 
     //Funzione removeToWishlist()
-    function removeToWishlist(prod){
+    function removeToWishlist(prod) {
         //se l oggetto dentro wishlist e diverso dal prod.id (true conserva ) altrimenti se so uguali (false scarta)
         const rimuovoProd = wishlist.filter(item => item.id !== prod.id)
         setWishlist(rimuovoProd)
@@ -109,7 +132,7 @@ export default function GlobalProvider({ children }) {
             smartphoneDetail, phoneDetail,
 
             //wishlist value con anche la funzione addToWishlist
-            wishlist, setWishlist, addToWishlist,removeToWishlist
+            wishlist, setWishlist, addToWishlist, removeToWishlist
         }}>
             {children}
         </GlobalContext.Provider>
