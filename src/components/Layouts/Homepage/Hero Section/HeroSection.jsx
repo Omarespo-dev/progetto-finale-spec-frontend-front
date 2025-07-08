@@ -1,5 +1,5 @@
 //css
-import { useContext, useEffect, useState } from 'react';
+import { useContext, useEffect, useMemo, useState } from 'react';
 import '../../../../style/HeroSection.css'
 
 //typewriter
@@ -54,8 +54,10 @@ export default function HeroSection() {
         fetchRecordCategory()
     }, [])
 
-    //Rimuovo i duplicati dal recordData cosi che mi ricavo solo le categorie senza duplicati
-    const removeDuplicate = [...new Set(dataCategory.map(smart => smart.category))]
+    //Rimuovo i duplicati dal recordData cosi che mi ricavo solo le categorie senza duplicati // inoltre ottimizo con useMemo per far si che il calcolo non venga effettuato ad ogni re render
+    const removeDuplicate = useMemo(() => {
+        return [...new Set(dataCategory.map(smart => smart.category))]
+    },[dataCategory])
 
 
     //Funzione select product
@@ -103,15 +105,15 @@ export default function HeroSection() {
                             style={{
                                 color: "white",
                                 textDecoration: "none",
-                                backgroundColor:" #fc6d39",
+                                backgroundColor: " #fc6d39",
                                 border: "none",
                                 cursor: "pointer",
                                 padding: "7px 15px",
                                 font: "inherit",
-                                marginTop:"10px",
-                                
-                                borderRadius:"20px"
-                                
+                                marginTop: "10px",
+
+                                borderRadius: "20px"
+
                             }}
                             onClick={() => navigate("/compare")}
                         >
@@ -227,3 +229,5 @@ export default function HeroSection() {
         </div>
     )
 }
+
+

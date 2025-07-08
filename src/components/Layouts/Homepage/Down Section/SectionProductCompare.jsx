@@ -1,8 +1,6 @@
 //importo css
 import '../../../../style/SectionProductCompare.css'
 
-//importo icona
-import { CiHeart } from "react-icons/ci";
 
 //importo context e global per prendere i dati dal global
 import { useContext, useEffect, useState } from 'react'
@@ -14,6 +12,9 @@ import { Link, useNavigate } from 'react-router-dom';
 
 //IMPORTO TOAST ALERT
 import { toast } from 'react-toastify';
+
+//import figlio card
+import CardProductCompare from './CardProductCompare.jsx';
 
 export default function SectionProductCompare() {
 
@@ -106,27 +107,12 @@ export default function SectionProductCompare() {
 
           {/* dall oggetto ricavo la proprieta product */}
 
-          {sixObj.length > 0 ? sixObj.map(product => (
-            <div className="card-evidenza" key={product.id}>
-              <section className="set-cuore-card">
-                <CiHeart onClick={() => addToWishlist(product)} style={{color: wishlist.some(item => item.id === product.id) ? "red" : "black"}} />
-              </section>
-
-              <section className="set-img-card">
-                <Link to={`/smartphone/${product.id}`}> <img src={product.image} alt={product.title} /> </Link>
-              </section>
-
-              <section className="set-description">
-                <p>{product.title} </p>
-                <button onClick={() => addProduct(product)}>Aggiungi al Confronto</button>
-              </section>
-            </div>
-          ))
-            :
-            <div className="card-evidenza" style={{ width: "100%", textAlign: 'center' }}>
-              <h2>Erore di Rete nessun Smartphone Trovato</h2>
-            </div>
-          }
+          <CardProductCompare
+            sixObj={sixObj}
+            addToWishlist={addToWishlist}
+            wishlist={wishlist}
+            addProduct={addProduct}
+          />
 
         </div>
 
