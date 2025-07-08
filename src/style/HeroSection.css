@@ -69,8 +69,7 @@
     color: #666;
 }
 
-.input-container input
- {
+.input-container input {
     outline: none;
     border: 2px solid #fc6d39;
     background-color: #fff;
@@ -118,4 +117,14 @@ select:hover {
     border-bottom: 1px solid gainsboro;
     padding: 7px;
     cursor: pointer;
+}
+
+@media (min-width: 250px) and (max-width: 650px) {
+    .input-container {
+        width: unset;
+    }
+
+    .set-input-btn-hero{
+        flex-wrap: wrap;
+    }
 }

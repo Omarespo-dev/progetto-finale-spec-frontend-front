@@ -1,6 +1,6 @@
 /* Footer set */
-.container-footer{
-    height: 300px;
+.container-footer {
+    /* height: 300px; */
     background-color: black;
     display: flex;
     justify-content: center;
@@ -8,7 +8,7 @@
 }
 
 /* CONTAINER FLEX */
-.container-flex-footer{
+.container-flex-footer {
     width: 95%;
     /* background-color: antiquewhite; */
     display: flex;
@@ -16,7 +16,7 @@
 
 
 /* FLEX ITEM SET 1 */
-.flex-item-footer{
+.flex-item-footer {
     width: 50%;
     /* background-color: red; */
     padding: 50px;
@@ -26,19 +26,19 @@
 }
 
 /* section 1*/
-.flex-section-footer img{
+.flex-section-footer img {
     width: 150px;
 }
 
-.flex-section-footer p{
-    color:white;
+.flex-section-footer p {
+    color: white;
     margin-top: 20px;
     font-size: 15px;
 }
 
 
 /* section 2*/
-.flex-section-footer-2  ul{
+.flex-section-footer-2 ul {
     display: flex;
     gap: 20px;
 }
@@ -54,27 +54,48 @@
 
 
 /* FLEX ITEM SET 2 */
-.flex-item-footer2{
+.flex-item-footer2 {
     width: 50%;
     /* background-color: red; */
     padding: 50px;
     display: flex;
 }
 
-.flex-section-footer3{
+.flex-section-footer3 {
     width: 50%;
 }
 
-.flex-section-footer3 h3{
+.flex-section-footer3 h3 {
     color: gray;
 }
-.flex-section-footer3 ul li{
+
+.flex-section-footer3 ul li {
     list-style-type: none;
     color: white;
 }
 
-.flex-section-footer3 ul a{
+.flex-section-footer3 ul a {
     text-decoration: none;
     color: white;
-    padding: 10px ;
+    padding: 10px;
+}
+
+/* Media Queries */
+@media (min-width: 250px) and (max-width: 650px) {
+    .container-flex-footer{
+        flex-wrap: wrap;
+    }
+    .flex-item-footer{
+        width: unset;
+    }
+
+    .flex-item-footer2{
+        width: unset;
+        flex-wrap: wrap;
+    }
+
+    .flex-section-footer3{
+        width: unset;
+        margin-right: 20px;
+    }
 }

@@ -1,4 +1,3 @@
-
 //import css
 import "../../../style/WishlistPage.css"
 
@@ -9,9 +8,10 @@ import { Link, useNavigate } from "react-router-dom"
 
 
 //importo dati dal context per la gestionre della wishlist
-import { useContext } from "react"
+import { useContext, useCallback } from "react"
 import { GlobalContext } from "../../../contexts/GlobalContext"
 import { toast } from "react-toastify"
+import CardWishlist from "./CardWishlist"
 
 
 
@@ -31,7 +31,11 @@ export default function Wishlist() {
     const navigate = useNavigate(); // Hook per navigazione programmatica
 
     //Function per aggiungere il prodotto al arrObjCompleto che include tutto
-    function addProduct(prod) {
+
+    // Uso useCallback perché questa funzione viene passata a un componente figlio memoizzato con React.memo.
+    // Senza useCallback, la funzione verrebbe ricreata a ogni render del genitore, causando il re-render inutile del figlio.
+    // Con useCallback, la funzione mantiene la stessa referenza finché le sue dipendenze non cambiano, evitando re-render inutili del figlio memoizzato.
+    const addProduct = useCallback((prod) => {
 
         // PRIMA controlla il limite se la sua length e maggiore di 2 dammi l alert e non farmi niente
         if (arrObjCompleto.length >= 3) {
@@ -71,7 +75,7 @@ export default function Wishlist() {
         } else {
             toast.error("Hai aggiunto lo stesso prodotto nel Comparatore");
         }
-    }
+    }, [arrObjCompleto, setArrObjCompleto, navigate, toast]);
 
 
     return (
@@ -84,33 +88,11 @@ export default function Wishlist() {
                 </div>
 
                 <div className="smartphone-card-wishlist">
-                    {wishlist.length > 0 ? wishlist.map(product => (
-
-                        <div className="card-evidenza-wishlist" key={product.id}>
-                            <section className="set-cuore-card-wishlist">
-                                <CiHeart style={{ color: wishlist.some(item => item.id === product.id) ? "red" : "black" }} onClick={() => removeToWishlist(product)} />
-                            </section>
-
-                            <section className="set-img-card-wishlist">
-                                <Link to={`/smartphone/${product.id}`}> <img src={product.image} alt={product.title} /> </Link>
-                            </section>
-
-                            <section className="set-description-wishlist">
-                                <p>{product.title} </p>
-                                <button onClick={() => addProduct(product)}>Aggiungi al Confronto</button>
-                            </section>
-                        </div>
-
-
-                    )) :
-                        <div className="compare-card-compare-section-1-wishlist">
-                            <div className="compare-compare-name-wishlist">
-                                <h2>Nessun Prodotto Aggiunto alla wishlist</h2>
-                                <Link to="/smartphone"> <button >Vai alla lista Prodotti</button> </Link>
-                            </div>
-
-                        </div>
-                    }
+                    <CardWishlist
+                        wishlist={wishlist}
+                        addProduct={addProduct}
+                        removeToWishlist={removeToWishlist}
+                    />
 
                 </div>
             </div>

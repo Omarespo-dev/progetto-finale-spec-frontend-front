@@ -1,6 +1,5 @@
-
 //Importiamo il contesto 
-import { createContext, useEffect, useState } from "react";
+import { createContext, useEffect, useState, useCallback } from "react";
 
 //Definiamo il Global Context
 const GlobalContext = createContext()
@@ -67,14 +66,13 @@ export default function GlobalProvider({ children }) {
         //Prende il tuo array o oggetto wishlist e trasformalo in stringa JSON pk il browser riesce a leggere solo cosi
         //E Salva questa stringa dentro il localStorage del browser, con chiave "wishlist".
         localStorage.setItem("wishlist", JSON.stringify(wishlist))
-    },[wishlist]) //Mi fai questo al montaggio del componente e al cambiare della wishlist
+    }, [wishlist]) //Mi fai questo al montaggio del componente e al cambiare della wishlist
 
 
     const navigate = useNavigate(); // Hook per navigazione programmatica
 
-    //Funzione addToWishlist()
-    function addToWishlist(prodId) {
-
+    //Funzione addToWishlist() memoizzata
+    const addToWishlist = useCallback((prodId) => {
         //verifico se nella wishlist contiene gia lo stesso prodotto
         const verificoProd = wishlist.some(item => item.id === prodId.id)
 
@@ -107,16 +105,14 @@ export default function GlobalProvider({ children }) {
         } else {
             toast.error("Hai aggiunto lo stesso prodotto alla wishlist");
         }
-    }
+    }, [wishlist, navigate, toast]);
 
-    //Funzione removeToWishlist()
-    function removeToWishlist(prod) {
+    //Funzione removeToWishlist() memoizzata
+    const removeToWishlist = useCallback((prod) => {
         //se l oggetto dentro wishlist e diverso dal prod.id (true conserva ) altrimenti se so uguali (false scarta)
         const rimuovoProd = wishlist.filter(item => item.id !== prod.id)
         setWishlist(rimuovoProd)
-    }
-
-
+    }, [wishlist]);
 
 
 
