@@ -90,7 +90,7 @@ export default function SectionProductCompare() {
   ///////////////////////////////////////////////////////////
   //Gestione wishlist
 
-  console.log(wishlist);
+  // console.log(wishlist);
 
   return (
     <div className="container-smartphone-compare">

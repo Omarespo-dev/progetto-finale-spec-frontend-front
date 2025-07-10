@@ -1,5 +1,5 @@
 //css
-import { useContext, useEffect, useMemo, useState } from 'react';
+import { useContext, useEffect, useMemo, useState, useCallback } from 'react';
 import '../../../../style/HeroSection.css'
 
 //typewriter
@@ -13,6 +13,21 @@ import { GlobalContext } from '../../../../contexts/GlobalContext';
 import { toast } from 'react-toastify';
 import { Link, useNavigate } from 'react-router-dom';
 
+// Funzione debounce generica
+// Accetta una funzione (fn) (versione debounced) e un ritardo in millisecondi (delay)
+const debounce = (fn, delay) => {
+    let timeoutId;
+    //accetta tanti parametri
+    //Ogni volta che la funzione ritornata viene chiamata
+    return (...args) => {
+        // Cancella il timeout precedente se l'utente continua a digitare
+        clearTimeout(timeoutId);
+        // Imposta un nuovo timeout: la funzione fn verrà chiamata solo dopo il delay
+        timeoutId = setTimeout(() => {
+            fn(...args);
+        }, delay);
+    };
+};
 
 export default function HeroSection() {
 
@@ -40,10 +55,32 @@ export default function HeroSection() {
     const navigate = useNavigate(); // Hook per navigazione programmatica
 
 
-    //uso UseEffect per non fare chiamate illimitate inoltre mi deve rifare la funzione  anche quando cambia input e il selectInput
+    //Faccio la versione Debounced // memoizziamo il valore della funzione 
+    //Richiamiamo la funzione Debounce dove prende due parametri una funzione e un delay
+    //e POI la funzione che dovra essere ritardata e la fetchRecord
+    const debouncedFetchRecord = useMemo(() =>
+        debounce((searchTerm, category) => {
+            fetchRecord(searchTerm, category);
+        }, 500)
+        , [fetchRecord]);
+    
+
+    // Effettua la chiamata debounced ogni volta che cambiano input o categoria.
+    // In questo modo, la ricerca parte solo dopo che l'utente ha smesso di digitare per almeno 500ms.
     useEffect(() => {
-        fetchRecord(input, inputSelect)
-    }, [input, inputSelect])
+        debouncedFetchRecord(input, inputSelect);
+    }, [input, inputSelect, debouncedFetchRecord]);
+
+    // Se l'utente seleziona una categoria ma il campo di ricerca è vuoto,
+    // esegue subito la fetch senza debounce per mostrare immediatamente i risultati della categoria.
+    useEffect(() => {
+        if (!input) {
+            fetchRecord("", inputSelect);
+        }
+    }, [inputSelect]);
+
+
+
 
     //log dei dati della query
     // console.log(recordData);
@@ -56,8 +93,9 @@ export default function HeroSection() {
 
     //Rimuovo i duplicati dal recordData cosi che mi ricavo solo le categorie senza duplicati // inoltre ottimizo con useMemo per far si che il calcolo non venga effettuato ad ogni re render
     const removeDuplicate = useMemo(() => {
+        //new Set toglie i duplicati ma otteniamo un {} / [...] lo trasforma di nuovo in un arr
         return [...new Set(dataCategory.map(smart => smart.category))]
-    },[dataCategory])
+    }, [dataCategory])
 
 
     //Funzione select product
@@ -68,7 +106,6 @@ export default function HeroSection() {
         //chiudo lista
         setShowList(false)
     }
-
 
 
     ///////////////////////////////////////////////////////////
@@ -90,10 +127,12 @@ export default function HeroSection() {
         //CERCO NELL ARR RECOR-DATA SE L OGGETTO E === INPUT SELEZIONATO
         const verifico = recordData.find(obj => obj.title === input)
 
+
         //SE E VERO ALLORA TU MI VERIFICHI SE ANCHE QUEL OGGETTO E GIA PRESENTE NELL ARR OGGETTO PK SE FOSSE VERO CHE HANNO ID UGUALI ALLORA RITORNI L ARR ALTRIMENTI MI FAI LA COPIA DELL ARR E MI AGGIUNGI L OGGETTO
         if (verifico) {
             // Calcolo se è duplicato PRIMA del setState
             const isDuplicate = arrConfronto.some(item => item.id === verifico.id);
+
             if (isDuplicate) {
                 toast.error("Hai aggiunto lo stesso prodotto nel Comparatore");
             } else {
@@ -134,7 +173,7 @@ export default function HeroSection() {
     }, [arrConfronto])
 
     //DEBUG per arr di oggetti per il confronto
-    // console.log(arrObjCompleto);
+    // console.log(arrConfronto);
 
 
 
@@ -176,7 +215,6 @@ export default function HeroSection() {
                                 setShowList(true)
                                 setInput(e.target.value)
                             }}
-
                         />
 
                         {showList && (

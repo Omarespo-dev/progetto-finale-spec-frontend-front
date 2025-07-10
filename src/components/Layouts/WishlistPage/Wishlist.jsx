@@ -31,7 +31,6 @@ export default function Wishlist() {
     const navigate = useNavigate(); // Hook per navigazione programmatica
 
     //Function per aggiungere il prodotto al arrObjCompleto che include tutto
-
     // Uso useCallback perché questa funzione viene passata a un componente figlio memoizzato con React.memo.
     // Senza useCallback, la funzione verrebbe ricreata a ogni render del genitore, causando il re-render inutile del figlio.
     // Con useCallback, la funzione mantiene la stessa referenza finché le sue dipendenze non cambiano, evitando re-render inutili del figlio memoizzato.

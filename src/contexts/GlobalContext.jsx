@@ -10,7 +10,7 @@ export { GlobalContext };
 import useFetch from "../hooks/useFetch";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
-import { WiSleet } from "react-icons/wi";
+
 
 // Funzione da rendere disponibile in tutto il codice
 export default function GlobalProvider({ children }) {
@@ -46,11 +46,10 @@ export default function GlobalProvider({ children }) {
     //GESTIONE DELLA WISHLIST
     //stato per dati per conservare oggetto nella wishlist []
 
-
     //1) React esegue questa funzione una volta sola, al primo render del componente. 
     //2)  Questo serve a leggere dal localStorage solo una volta, e non ogni volta che il componente si ricarica.
 
-    const [wishlist, setWishlist] = useState(() => {   //funzione anonima
+    const [wishlist, setWishlist] = useState(() => {   
 
         //leggi dal browser se c'e la chiave wishlist
         const salvata = localStorage.getItem("wishlist")
@@ -60,7 +59,7 @@ export default function GlobalProvider({ children }) {
     })
 
 
-    //Ora per salvare automaticamente nel localstorage ogni volta che cambia la wishlist quindi (aggiunta prodotto-rimozione etc..)
+    //Ora per salvare automaticamente nel localstorage ogni volta che cambia la wishlist come(aggiunta prodotto-rimozione etc..)
     //usiamo useEffect
     useEffect(() => {
         //Prende il tuo array o oggetto wishlist e trasformalo in stringa JSON pk il browser riesce a leggere solo cosi
